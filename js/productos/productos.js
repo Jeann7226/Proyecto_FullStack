@@ -1,4 +1,5 @@
 export const datosProductos = [
+  //prueba2
   { imagen: "https://via.placeholder.com/50", titulo: "Teclado Mecánico", precio: 45000, descripcion: "Teclado mecánico ideal para desarrollo web." },
   { imagen: "https://via.placeholder.com/50", titulo: "Monitor 24 pulgadas", precio: 120000, descripcion: "Monitor IPS con resolución Full HD." },
   { imagen: "https://via.placeholder.com/50", titulo: "Ratón Inalámbrico", precio: 25000, descripcion: "Ratón ergonómico con batería de larga duración." },
