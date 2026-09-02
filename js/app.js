@@ -1,6 +1,6 @@
  // 1. JSON simulado con los datos de los productos
 import { datosProductos } from "./productos/productos.js";
-
+//holaaaaa
 // 2. Capturar el contenedor usando su ID (ya no necesitamos el [0])
 const contenedor = document.getElementById("contenedor-productos");
 
