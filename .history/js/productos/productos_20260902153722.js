@@ -3,21 +3,20 @@ export const datosProductos = [
         titulo: "Camiseta Brasil Local 2026",
         precio: 49990,
         descripcion: "Polera oficial de la selección brasileña con tejido transpirable.",
-        img: "https://nikeclprod.vtexassets.com/arquivos/ids/1642724-800-800?v=639095564577270000&width=800&height=800&aspect=true",
+        img: "https://nikeclprod.vtexassets.com/arquivos/ids/1642724-800-800?v=639095564577270000&width=800&height=800&aspect=true"
         imgEspalda: "https://nikeclprod.vtexassets.com/arquivos/ids/1642725-800-800?v=639153333751930000&width=800&height=800&aspect=true"
     },
     {
         titulo: "Camiseta Universidad de Chile Local",
         precio: 44990,
         descripcion: "Camiseta oficial azul con cuello en V y detalles clásicos del club.",
-        img: "https://assets.adidas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/69e19ebb3ae04a48a106787bed16c10e_9366/Tercera_Camiseta_Universidad_de_Chile_26-27_Rojo_KA2351_21_model.jpg",
-        imgEspalda: "https://assets.adidas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/0b221bfb20b54cc392f51e8aa22a12ae_9366/Tercera_Camiseta_Universidad_de_Chile_26-27_Rojo_KA2351_23_hover_model.jpg"
+        img: "imagenes/camisetas/u-de-chile.webp"
     },
     {
         titulo: "Camiseta Francia Local 2026",
         precio: 49990,
         descripcion: "Edición oficial de la selección francesa con detalles en dorado.",
-        img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRTGxmMt10xpQVVyLtlHyBgcklD4w5nnXTOP8Wu2uE0T2qWAeUiSHAvq_FqZ9_rkxci7OEyq16tsjl8KzUGRCauT31ufseXew"
+        img: "imagenes/camisetas/francia.webp"
     },
     {
         titulo: "Camiseta España Local 2026",

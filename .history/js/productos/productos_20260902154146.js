@@ -16,8 +16,8 @@ export const datosProductos = [
     {
         titulo: "Camiseta Francia Local 2026",
         precio: 49990,
-        descripcion: "Edición oficial de la selección francesa con detalles en dorado.",
-        img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRTGxmMt10xpQVVyLtlHyBgcklD4w5nnXTOP8Wu2uE0T2qWAeUiSHAvq_FqZ9_rkxci7OEyq16tsjl8KzUGRCauT31ufseXew"
+        descripcion: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRTGxmMt10xpQVVyLtlHyBgcklD4w5nnXTOP8Wu2uE0T2qWAeUiSHAvq_FqZ9_rkxci7OEyq16tsjl8KzUGRCauT31ufseXew",
+        img: "imagenes/camisetas/francia.webp"
     },
     {
         titulo: "Camiseta España Local 2026",
