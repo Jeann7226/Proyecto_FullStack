@@ -74,4 +74,4 @@ export const datosProductos = [
         img: "imagenes/camisetas/venezuela.webp"
     }
 
-];
+  
