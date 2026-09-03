@@ -3,7 +3,7 @@ import { renderFooter } from "./components/footer.js";
 import { datosProductos } from "./productos/productos.js";
 
 renderHeader();
-renderFooter
+renderFooter();
 // 2. Capturar el contenedor usando su ID (ya no necesitamos el [0])
 
 

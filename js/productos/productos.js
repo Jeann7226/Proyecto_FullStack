@@ -4,8 +4,8 @@ export const datosProductos = [
         titulo: "Camiseta Brasil Local 2026",
         precio: 49990,
         descripcion: "Polera oficial de la selección brasileña con tejido transpirable.",
-        img: "assets/images/brasil/brasil1.jpg",
-        img2: "assets/images/brasil/brasil2.png"
+        img: "assets/images/brasil/brasil1.jpeg",
+        img2: "assets/images/brasil/brasil2.jpeg"
     },
     {
         id: 2,
