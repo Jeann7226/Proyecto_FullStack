@@ -1,0 +1,6 @@
+# Editores y configuraciones locales
+.history/
+.vscode/
+
+# Dependencias (por si a futuro usan npm)
+node_modules/
