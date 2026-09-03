@@ -1,30 +1,20 @@
-import { renderHeader } from "./components/header.js";
-import { renderFooter } from "./components/footer.js";
+ // 1. JSON simulado con los datos de los productos
 import { datosProductos } from "./productos/productos.js";
 
-// Renderizar componentes compartidos
-renderHeader();
-renderFooter();
-
 // 2. Capturar el contenedor usando su ID (ya no necesitamos el [0])
-
 const contenedor = document.getElementById("contenedor-productos");
 
-// Limpiamos el contenedor para evitar duplicados
-contenedor.innerHTML = "";
-
-// Iteramos el JSON para crear las tarjetas con diseño
+// 3. Iterar sobre el JSON para crear un div por cada producto
 datosProductos.forEach(producto => {
   
   // Crear el div contenedor del producto
   const divProducto = document.createElement("div");
   divProducto.className = "tarjeta-producto"; // Mantenemos la clase para que puedas darle estilo con CSS
   // Crear la imagen
-  const img1 = document.createElement("img");
-  img1.src = producto.imagen;
-  img1.alt = producto.titulo;
-  img1.className = "image is-64x64"
-  
+  const img = document.createElement("img");
+  img.src = producto.imagen;
+  img.alt = producto.titulo;
+  img.className = "image is-64x64"
   // Crear el título
   const titulo = document.createElement("h3");
   titulo.textContent = producto.titulo;
