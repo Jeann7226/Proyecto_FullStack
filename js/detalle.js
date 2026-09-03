@@ -23,7 +23,11 @@ if (producto) {
         <article class="columns is-vcentered">
             <div class="column is-half">
                 <figure class="image is-4by3">
-                    <img src="../${producto.img}" alt="${producto.titulo}" style="object-fit: cover; border-radius: 8px;">
+                    <img src="../${producto.img}" alt="${producto.titulo}"">
+                    
+                </figure>
+                <figure class="image is-4by3">
+                <img src="../${producto.img2}" alt="${producto.titulo}"">
                 </figure>
             </div>
             <div class="column is-half">
