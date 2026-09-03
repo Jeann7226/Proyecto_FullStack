@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import { renderHeader } from "./components/header.js";
 import { renderFooter } from "./components/footer.js";
 import { datosProductos } from "./productos/productos.js";
@@ -8,10 +7,7 @@ renderHeader();
 renderFooter();
 
 // 2. Capturar el contenedor usando su ID (ya no necesitamos el [0])
-=======
-import { datosProductos } from "./productos/productos.js";
 
->>>>>>> Stashed changes
 const contenedor = document.getElementById("contenedor-productos");
 
 // Limpiamos el contenedor para evitar duplicados
