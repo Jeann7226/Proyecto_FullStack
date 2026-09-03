@@ -2,13 +2,13 @@ import { renderHeader } from "./components/header.js";
 import { renderFooter } from "./components/footer.js";
 import { datosProductos } from "./productos/productos.js";
 
-// Renderizar componentes compartidos
 renderHeader();
 renderFooter();
-
 // 2. Capturar el contenedor usando su ID (ya no necesitamos el [0])
 
+
 const contenedor = document.getElementById("contenedor-productos");
+
 // Limpiamos el contenedor
 if (contenedor) {
     contenedor.innerHTML = "";
@@ -18,7 +18,7 @@ if (contenedor) {
         const tarjeta = `
             <article class="column is-12-mobile is-4-tablet is-3-desktop">
                 <!-- Envolvemos TODA la tarjeta en un enlace <a> -->
-                <a href="producto.html?id=${producto.id}" style="display: block; height: 100%; text-decoration: none;">
+                <a href="pages/productos.html?id=${producto.id}" style="display: block; height: 100%; text-decoration: none;">
                     
                     <!-- Le agregamos 'is-hoverable' para que haga un efecto al pasar el mouse -->
                     <div class="card is-hoverable" style="height: 100%; display: flex; flex-direction: column;">
