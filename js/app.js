@@ -1,5 +1,10 @@
- // 1. JSON simulado con los datos de los productos
+import { renderHeader } from "./components/header.js";
+import { renderFooter } from "./components/footer.js";
 import { datosProductos } from "./productos/productos.js";
+
+// Renderizar componentes compartidos
+renderHeader();
+renderFooter();
 
 // 2. Capturar el contenedor usando su ID (ya no necesitamos el [0])
 const contenedor = document.getElementById("contenedor-productos");
