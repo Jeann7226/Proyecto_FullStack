@@ -13,7 +13,7 @@ const contenedor = document.getElementById("contenedor-productos");
 if (contenedor) {
     contenedor.innerHTML = "";
 
-    // Iteramos el JSON para crear las tarjetas
+    // Iteramos el JSON para crear las tarjetaas
     datosProductos.forEach(producto => {
         const tarjeta = `
             <article class="column is-12-mobile is-4-tablet is-3-desktop">
