@@ -5,11 +5,7 @@ export const datosProductos = [
         precio: 49990,
         descripcion: "Polera oficial de la selección brasileña con tejido transpirable.",
         img: "assets/images/brasil/brasil1.jpeg",
-<<<<<<< HEAD
-        img2: "assets/images/brasil/brasil2.jpeg"
-=======
         img2: "assets/images/brasil/brasil2.png"
->>>>>>> origin/main
     },
     {
         id: 2,
@@ -24,10 +20,6 @@ export const datosProductos = [
         titulo: "Camiseta Francia Local 2026",
         precio: 49990,
         descripcion: "Edición oficial de la selección francesa con detalles en dorado.",
-<<<<<<< HEAD
-        // Nota: No vi la carpeta de Francia en tu foto, asegúrate de crearla
-=======
->>>>>>> origin/main
         img: "assets/images/francia/francia1.png",
         img2: "assets/images/francia/francia2.png"
     },
@@ -35,11 +27,7 @@ export const datosProductos = [
         id: 4,
         titulo: "Camiseta España Local 2026",
         precio: 49990,
-<<<<<<< HEAD
-        descripcion: "Camiseta de fútbol inspirada en la camiseta local de España para los amantes del fútbol.",
-=======
         descripcion: "Camiseta de fútbol inspirada en la camiseta local de España  para los amantes del fútbol.",
->>>>>>> origin/main
         img: "assets/images/españa/españa2.jpg",
         img2: "assets/images/españa/españa3.jpg"
     },
@@ -97,11 +85,7 @@ export const datosProductos = [
         precio: 48990,
         descripcion: "Polera amarilla con detalles en azul y rojo de alta resistencia.",
         img: "assets/images/colombia/col1.jpg",
-<<<<<<< HEAD
-        img2: "assets/images/colombia/col2.jpg"
-=======
         img2: "assets/images/colombia/col2.jpeg"
->>>>>>> origin/main
     },
     {
         id: 12,
