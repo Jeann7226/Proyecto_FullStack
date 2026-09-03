@@ -8,6 +8,9 @@ renderFooter();
 
 
 const contenedor = document.getElementById("contenedor-productos");
+// Limpiamos el contenedor
+if (contenedor) {
+    contenedor.innerHTML = "";
 
 // Limpiamos el contenedor
 if (contenedor) {
