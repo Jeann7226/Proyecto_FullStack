@@ -30,7 +30,7 @@ datosProductos.forEach(producto => {
                         $${producto.precio.toLocaleString('es-CL')}
                     </p>
                     <!-- BOTÓN VER DETALLE CON EL ID DINÁMICO -->
-                    <a href="producto.html?id=${producto.id}" class="button is-link is-fullwidth mt-auto">
+                    <a href="pages/detalle.html?id=${producto.id}" class="button is-link is-fullwidth mt-auto">
                         Ver Detalles
                     </a>
                     <button class="button is-primary is-fullwidth mt-2">

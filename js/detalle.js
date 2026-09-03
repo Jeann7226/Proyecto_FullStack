@@ -1,5 +1,10 @@
-// Importamos los datos (Asegúrense de que la ruta sea correcta según sus carpetas)
+import { renderHeader } from "./components/header.js";
+import { renderFooter } from "./components/footer.js";
 import { datosProductos } from "./productos/productos.js";
+
+// Renderizar componentes compartidos
+renderHeader();
+renderFooter();
 
 // Capturamos el contenedor del HTML
 const contenedorDetalle = document.getElementById("contenedor-detalle");
@@ -18,7 +23,7 @@ if (producto) {
         <article class="columns is-vcentered">
             <div class="column is-half">
                 <figure class="image is-4by3">
-                    <img src="${producto.img}" alt="${producto.titulo}" style="object-fit: cover; border-radius: 8px;">
+                    <img src="../${producto.img}" alt="${producto.titulo}" style="object-fit: cover; border-radius: 8px;">
                 </figure>
             </div>
             <div class="column is-half">
@@ -30,7 +35,7 @@ if (producto) {
                     <button class="button is-primary is-large" id="btn-agregar">
                         Agregar al Carrito
                     </button>
-                    <a href="index.html" class="button is-light is-large">
+                    <a href="../index.html" class="button is-light is-large">
                         Volver al inicio
                     </a>
                 </div>
@@ -42,7 +47,7 @@ if (producto) {
     contenedorDetalle.innerHTML = `
         <div class="notification is-danger has-text-centered">
             <h2 class="title is-4">¡Ups! Producto no encontrado.</h2>
-            <a href="index.html" class="button is-light mt-3">Volver al inicio</a>
+            <a href="../index.html" class="button is-light mt-3">Volver al inicio</a>
         </div>
     `;
 }
