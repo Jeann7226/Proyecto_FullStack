@@ -11,15 +11,10 @@ datosProductos.forEach(producto => {
   const divProducto = document.createElement("div");
   divProducto.className = "tarjeta-producto"; // Mantenemos la clase para que puedas darle estilo con CSS
   // Crear la imagen
-  const img1 = document.createElement("img");
-  img1.src = producto.imagen;
-  img1.alt = producto.titulo;
-  img1.className = "image is-64x64"
-  // 2. Crear la segunda imagen (espalda)
-  const img2 = document.createElement("img");
-  img2.src = producto.imagenEspalda;
-  img2.alt = `${producto.titulo} espalda`;
-  img2.className = "image is-64x64";
+  const img = document.createElement("img");
+  img.src = producto.imagen;
+  img.alt = producto.titulo;
+  img.className = "image is-64x64"
   // Crear el título
   const titulo = document.createElement("h3");
   titulo.textContent = producto.titulo;
