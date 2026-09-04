@@ -4,7 +4,6 @@ import { renderFooter } from "./components/footer.js";
 // Renderizar componentes compartidos
 renderHeader();
 renderFooter();
-
 // Elementos del formulario
 const formulario = document.getElementById("formulario-contacto");
 const inputNombre = document.getElementById("nombre");
