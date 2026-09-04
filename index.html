@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Le pusimos un título real a la pestaña -->
     <title>Tienda de Camisetas - Fútbol</title>
-    <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-    <!-- Su CSS Personalizado -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header id="main-header"></header>
 
-    <main class="section min-vh-100">
+    <main class="section">
         <div class="container">
-            <h1 class="title">Nuestros Productos</h1>
-            <div id="contenedor-productos"></div>
+            <h1 class="title has-text-centered mb-5">Nuestros Productos</h1>
+            <div id="contenedor-productos-home" class="columns is-multiline"></div>   
         </div>
     </main>
 
@@ -24,20 +21,4 @@
     <script type="module" src="js/app.js"></script>
 </body>
 </html>
-=======
-
-
-    <!-- 2. CONTENIDO PRINCIPAL (Obligatorio en la rúbrica) -->
-    <main class="section">
-        <div class="container">
-            <h1 class="title has-text-centered mb-5">Nuestros Productos</h1>
-            
-            <!-- 3. CONTENEDOR DE PRODUCTOS -->
-            <!-- Agregamos 'columns is-multiline' de Bulma para que arme la cuadrícula -->
-            <div id="contenedor-productos" class="columns is-multiline">
-                <!-- Aquí tu JavaScript (app.js) inyectará las tarjetas -->
-            </div>
-            
-        </div>
-    </main>
 

@@ -10,10 +10,21 @@
 <body>
     <header id="main-header"></header>
 
-    <main class="section min-vh-100">
+    <main class="section" style="min-height: 70vh;">
         <div class="container">
-            <h1 class="title">Tu Carrito de Compras</h1>
-            <p>Aquí se mostrarán los productos que has agregado al carrito.</p>
+            <h1 class="title">Tu Carrito de Compras 🛒</h1>
+            
+            <!-- 1. Aquí inyectaremos los productos del localStorage -->
+            <div id="contenedor-carrito"></div>
+
+            <!-- 2. Sección del Total (Oculta por defecto con 'is-hidden') -->
+            <div id="seccion-total" class="box mt-5 is-hidden">
+                <h2 class="title is-4 has-text-right">Total a pagar: $<span id="total-carrito">0</span></h2>
+                <div class="buttons is-right mt-4">
+                    <button class="button is-danger" id="btn-vaciar">Vaciar Carrito</button>
+                    <button class="button is-success" id="btn-comprar">Finalizar Compra</button>
+                </div>
+            </div>
         </div>
     </main>
 
