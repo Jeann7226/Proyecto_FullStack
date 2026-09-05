@@ -167,7 +167,7 @@ if (contenedorContacto) {
         const okNombre = validarNombre();
         const okCorreo = validarCorreo();
         const okContenido = validarContenido();
-
+        
         if (okNombre && okCorreo && okContenido) {
             mensajeExito.classList.remove("is-hidden");
 
