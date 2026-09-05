@@ -1,13 +1,6 @@
 import { renderHeader } from "./components/header.js";
 import { renderFooter } from "./components/footer.js";
 import { datosBlog } from "./productos/blog.js";
-const contenedorDetalle = document.getElementById("contenedor-detalle-blog");
-// 1. Leemos el id de la URL (?id=X)
-const parametrosURL = new URLSearchParams(window.location.search);
-const idNoticia = parseInt(parametrosURL.get("id"));
-// 2. Buscamos el artículo correspondiente
-const articulo = datosBlog.find(item => item.id === idNoticia);
-// 3. Mostramos la vista según el resultado
 
 // Renderizar componentes compartidos
 renderHeader();
