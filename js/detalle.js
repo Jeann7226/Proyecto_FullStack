@@ -33,17 +33,32 @@ if (producto) {
                 <p class="subtitle is-3 has-text-success mt-3">$${producto.precio.toLocaleString('es-CL')}</p>
                 <p class="content is-medium mt-4">${producto.descripcion}</p>
                 
-                <!-- NUEVO DISEÑO DE TALLAS TIPO CAJAS -->
+                <!-- TALLAS -->
                 <div class="field mt-5">
                     <label class="label is-size-5 mb-3">Tallas</label>
                     <div class="buttons mt-2" id="contenedor-tallas">
-                        <!-- Usamos data-talla para guardar el valor oculto en cada botón -->
                         <button class="button is-light is-medium talla-btn" data-talla="XS" style="width: 60px;">XS</button>
                         <button class="button is-light is-medium talla-btn" data-talla="S" style="width: 60px;">S</button>
                         <button class="button is-light is-medium talla-btn" data-talla="M" style="width: 60px;">M</button>
                         <button class="button is-light is-medium talla-btn" data-talla="L" style="width: 60px;">L</button>
                         <button class="button is-light is-medium talla-btn" data-talla="XL" style="width: 60px;">XL</button>
                         <button class="button is-light is-medium talla-btn" data-talla="2XL" style="width: 60px;">2XL</button>
+                    </div>
+                </div>
+
+                <!-- NUEVO: CANTIDAD -->
+                <div class="field mt-4">
+                    <label class="label is-size-5 mb-3">Cantidad</label>
+                    <div class="field has-addons">
+                        <p class="control">
+                            <button class="button is-light is-medium" id="btn-restar">-</button>
+                        </p>
+                        <p class="control">
+                            <input class="input is-medium has-text-centered has-text-weight-bold" type="text" id="input-cantidad" value="1" readonly style="width: 60px;">
+                        </p>
+                        <p class="control">
+                            <button class="button is-light is-medium" id="btn-sumar">+</button>
+                        </p>
                     </div>
                 </div>
                 
@@ -64,56 +79,71 @@ if (producto) {
     `;
 }
 
-// --- LÓGICA DE TALLAS Y CARRITO ---
+// --- LÓGICA DE TALLAS, CANTIDAD Y CARRITO ---
 
 const btnAgregar = document.getElementById("btn-agregar");
 const botonesTalla = document.querySelectorAll(".talla-btn");
-let tallaElegida = ""; // Variable para recordar qué talla eligió el usuario
+const btnRestar = document.getElementById("btn-restar");
+const btnSumar = document.getElementById("btn-sumar");
+const inputCantidad = document.getElementById("input-cantidad");
 
-// 1. Lógica para pintar el botón de talla seleccionado
+let tallaElegida = ""; 
+let cantidadElegida = 1; // Nueva variable para recordar cuántas quiere
+
+// 1. Lógica de las tallas (botones)
 if (botonesTalla.length > 0) {
     botonesTalla.forEach(boton => {
         boton.addEventListener("click", (e) => {
-            // A. Primero le quitamos el color oscuro a TODOS los botones
             botonesTalla.forEach(b => {
                 b.classList.remove("is-dark");
                 b.classList.add("is-light");
             });
-            
-            // B. Le ponemos el color oscuro SOLO al botón que clickeamos
             const btnClickeado = e.target;
             btnClickeado.classList.remove("is-light");
             btnClickeado.classList.add("is-dark");
-            
-            // C. Guardamos la talla seleccionada
             tallaElegida = btnClickeado.getAttribute("data-talla");
         });
     });
 }
 
-// 2. Lógica de agregar al carrito
+// 2. Lógica de sumar y restar cantidad
+if (btnRestar && btnSumar && inputCantidad) {
+    btnRestar.addEventListener("click", () => {
+        if (cantidadElegida > 1) { // Evitamos que compre 0 o números negativos
+            cantidadElegida--;
+            inputCantidad.value = cantidadElegida;
+        }
+    });
+
+    btnSumar.addEventListener("click", () => {
+        cantidadElegida++;
+        inputCantidad.value = cantidadElegida;
+    });
+}
+
+// 3. Lógica de agregar al carrito
 if (btnAgregar) {
     btnAgregar.addEventListener("click", () => {
         
-        // Bloqueo de seguridad: Si no ha elegido talla, no lo dejamos avanzar
         if (tallaElegida === "") {
             alert("⚠️ Por favor, selecciona una talla antes de agregar al carrito.");
-            return; // Corta la ejecución aquí
+            return; 
         }
 
         let carritoMemoria = JSON.parse(localStorage.getItem("carritoFutbol")) || [];
         
-        // Buscamos si ya existe el producto con esa TALLA ESPECÍFICA
         const productoExistente = carritoMemoria.find(item => item.id === producto.id && item.talla === tallaElegida);
         
         if (productoExistente) {
-            productoExistente.cantidad += 1;
+            // Si ya existe, le sumamos la cantidad que eligió en los botones
+            productoExistente.cantidad += cantidadElegida;
         } else {
-            carritoMemoria.push({ ...producto, cantidad: 1, talla: tallaElegida });
+            // Si es nueva, la guardamos con la cantidad exacta que eligió
+            carritoMemoria.push({ ...producto, cantidad: cantidadElegida, talla: tallaElegida });
         }
         
         localStorage.setItem("carritoFutbol", JSON.stringify(carritoMemoria));
         
-        alert(`¡La camiseta ${producto.titulo} (Talla ${tallaElegida}) se agregó al carrito! ⚽`);
+        alert(`¡Se agregaron ${cantidadElegida} camiseta(s) ${producto.titulo} (Talla ${tallaElegida}) al carrito! ⚽`);
     });
 }
