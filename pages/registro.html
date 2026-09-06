@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Mi Tienda</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header id="main-header"></header>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-two-thirds-tablet">
+                    <div class="box shadow-lg">
+                        <h1 class="title has-text-centered mb-5">Registro de Usuario</h1>
+                        <form id="registro-form">
+                            <div class="columns is-multiline">
+                                <!-- RUN -->
+                                <div class="column is-half">
+                                    <div class="field">
+                                        <label class="label">RUN</label>
+                                        <div class="control">
+                                            <input class="input" type="text" id="reg-run" placeholder="Ej: 19011022K (Sin puntos ni guión)" required minlength="7" maxlength="9">
+                                        </div>
+                                        <p class="help is-danger is-hidden" id="error-run">RUN no válido o formato incorrecto.</p>
+                                    </div>
+                                </div>
+                                <!-- Nombre -->
+                                <div class="column is-half">
+                                    <div class="field">
+                                        <label class="label">Nombre</label>
+                                        <div class="control">
+                                            <input class="input" type="text" id="reg-nombre" placeholder="Tu nombre" required maxlength="50">
+                                        </div>
+                                        <p class="help is-danger is-hidden" id="error-nombre">El nombre es requerido (Max 50 caracteres).</p>
+                                    </div>
+                                </div>
+                                <!-- Apellidos -->
+                                <div class="column is-half">
+                                    <div class="field">
+                                        <label class="label">Apellidos</label>
+                                        <div class="control">
+                                            <input class="input" type="text" id="reg-apellido" placeholder="Tus apellidos" required maxlength="100">
+                                        </div>
+                                        <p class="help is-danger is-hidden" id="error-apellido">El apellido es requerido (Max 100 caracteres).</p>
+                                    </div>
+                                </div>
+                                <!-- Correo -->
+                                <div class="column is-half">
+                                    <div class="field">
+                                        <label class="label">Correo Electrónico</label>
+                                        <div class="control">
+                                            <input class="input" type="email" id="reg-correo" placeholder="ejemplo@gmail.com" required maxlength="100">
+                                        </div>
+                                        <p class="help is-danger is-hidden" id="error-correo">Correo inválido. Dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com</p>
+                                    </div>
+                                </div>
+                                <!-- Fecha Nacimiento -->
+                                <div class="column is-half">
+                                    <div class="field">
+                                        <label class="label">Fecha de Nacimiento (Opcional)</label>
+                                        <div class="control">
+                                            <input class="input" type="date" id="reg-fecha">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Región -->
+                                <div class="column is-half">
+                                    <div class="field">
+                                        <label class="label">Región</label>
+                                        <div class="control">
+                                            <div class="select is-fullwidth">
+                                                <select id="reg-region" required>
+                                                    <option value="" disabled selected>Seleccione región...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <p class="help is-danger is-hidden" id="error-region">Seleccione una región.</p>
+                                    </div>
+                                </div>
+                                <!-- Comuna -->
+                                <div class="column is-half">
+                                    <div class="field">
+                                        <label class="label">Comuna</label>
+                                        <div class="control">
+                                            <div class="select is-fullwidth">
+                                                <select id="reg-comuna" required disabled>
+                                                    <option value="" disabled selected>Seleccione comuna...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <p class="help is-danger is-hidden" id="error-comuna">Seleccione una comuna.</p>
+                                    </div>
+                                </div>
+                                <!-- Dirección -->
+                                <div class="column is-full">
+                                    <div class="field">
+                                        <label class="label">Dirección</label>
+                                        <div class="control">
+                                            <input class="input" type="text" id="reg-direccion" placeholder="Calle, Número, Depto" required maxlength="300">
+                                        </div>
+                                        <p class="help is-danger is-hidden" id="error-direccion">Dirección requerida (Max 300 caracteres).</p>
+                                    </div>
+                                </div>
+                                <!-- Submit -->
+                                <div class="column is-full mt-4">
+                                    <button type="submit" class="button is-primary is-fullwidth is-medium">Registrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" src="../js/registro.js"></script>
+</body>
+</html>

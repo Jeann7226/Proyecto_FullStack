@@ -2,7 +2,6 @@ import { renderHeader } from "./components/header.js";
 import { renderFooter } from "./components/footer.js";
 import { datosBlog } from "./productos/blog.js";
 
-// Renderizar componentes compartidos
 renderHeader();
 renderFooter();
 

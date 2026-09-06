@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Mi Tienda</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header id="main-header"></header>
+
+    <section class="section" style="min-height: calc(100vh - 150px);">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half is-offset-one-quarter-desktop">
+                    <div class="box shadow-lg" style="margin-top: 2rem;">
+                        <h1 class="title has-text-centered mb-5">Iniciar Sesión</h1>
+                        <form id="login-form">
+                            <div class="field">
+                                <label class="label">Correo Electrónico</label>
+                                <div class="control">
+                                    <input class="input" type="email" id="login-email" placeholder="ejemplo@gmail.com" required maxlength="100">
+                                </div>
+                                <p class="help is-danger is-hidden" id="error-email">El correo no es válido. Solo se admiten @duoc.cl, @profesor.duoc.cl y @gmail.com</p>
+                            </div>
+
+                            <div class="field mt-4">
+                                <label class="label">Contraseña</label>
+                                <div class="control">
+                                    <input class="input" type="password" id="login-password" placeholder="Tu contraseña" required minlength="4" maxlength="10">
+                                </div>
+                                <p class="help is-danger is-hidden" id="error-password">La contraseña debe tener entre 4 y 10 caracteres.</p>
+                            </div>
+
+                            <div class="field is-grouped is-grouped-centered mt-5">
+                                <div class="control w-full" style="width: 100%;">
+                                    <button type="submit" class="button is-primary is-fullwidth">Ingresar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" src="../js/login.js"></script>
+</body>
+</html>

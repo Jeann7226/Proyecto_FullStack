@@ -27,6 +27,6 @@ export const datosBlog = [
         titulo: "CASO CURIOSO #4: La U y el origen del Chuncho en el pecho",
         resumen: "El símbolo universitario que reemplazó a la estrella solitaria y definió la identidad azul.",
         contenido: "Los primeros antecedentes del Club Deportivo de la Universidad de Chile a comienzos del siglo XX estuvieron marcados por la variabilidad en sus colores: la Federación Universitaria y los equipos de Medicina e Ingeniería llegaron a utilizar uniformes con franjas blancas y rojas. No fue hasta finales de la década de 1920 que comenzó a gestarse la identidad azul definitiva que caracteriza a la institución.<br><br>El emblema del Chuncho llegó en 1928 de la mano del Club Náutico Universitario, cuyos fundadores se inspiraron en una insignia que un grupo de estudiantes trajo desde Alemania. La figura corresponde a la lechuza de Minerva o Atenea, símbolo clásico de la sabiduría, el conocimiento, la vigilia y la prudencia en el mundo académico. Cuando el Club Deportivo Universidad de Chile se fundó formalmente en mayo de 1937 y debutó en el fútbol profesional en 1938, el Chuncho sobre la franja azul en el pecho sustituyó de manera definitiva a la antigua estrella solitaria, forjando el lazo indestructible entre la comunidad estudiantil y su hinchada.",
-        img: "assets/images/u_de_chile/lau1.webp",
+        img: "assets/images/u_de_chile/lau1.webp"
     }
 ];
