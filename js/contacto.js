@@ -7,6 +7,7 @@ renderFooter();
 
 const contenedorContacto = document.getElementById("contenedor-contacto");
 
+
 if (contenedorContacto) {
 
     contenedorContacto.innerHTML = `
