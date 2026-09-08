@@ -359,7 +359,45 @@ a[href*="login.html"]:hover::after {
 }
 
 
+/* Corrección de tarjetas del Blog */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
 
+.card .card-image {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
 
+.card .card-image figure.image {
+    margin: 0;
+    width: 100%;
+    height: auto;
+}
 
+.card .card-image img {
+    width: 100%;
+    height: 220px !important;
+    object-fit: cover !important;
+    object-position: top center;
+    display: block;
+}
 
+.card .card-content {
+    padding: 1.25rem !important;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card .card-content .title {
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.3 !important;
+    overflow: visible !important;
+}
