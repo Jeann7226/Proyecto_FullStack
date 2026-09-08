@@ -98,6 +98,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const hasValidDomain = emailDomains.some(domain => correoVal.endsWith(domain));
             isValid = validateField("reg-correo", correoVal.length > 0 && correoVal.length <= 100 && hasValidDomain, isValid);
 
+            // Validar Contraseña
+            const passVal = document.getElementById("reg-password") ? document.getElementById("reg-password").value.trim() : "";
+            isValid = validateField("reg-password", passVal.length >= 4 && passVal.length <= 10, isValid);
+
+            // Validar Confirmación de Contraseña
+            const passConfirmVal = document.getElementById("reg-confirm-password") ? document.getElementById("reg-confirm-password").value.trim() : "";
+            isValid = validateField("reg-confirm-password", passConfirmVal === passVal && passConfirmVal.length > 0, isValid);
+
             // Validar Region y Comuna
             isValid = validateField("reg-region", regionSelect.value !== "", isValid);
             isValid = validateField("reg-comuna", comunaSelect.value !== "", isValid);

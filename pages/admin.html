@@ -8,27 +8,299 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header id="main-header"></header>
 
-    <section class="section" style="min-height: calc(100vh - 150px);">
-        <div class="container">
-            <div class="box shadow-lg" style="margin-top: 2rem;">
-                <h1 class="title has-text-centered mb-5">Vista de Admin</h1>
-                <p class="has-text-centered">Todavía no tiene contenido. Se avanzará por partes.</p>
+    <section class="section p-0" style="min-height: calc(100vh - 100px); display: flex;">
+        <div class="columns is-gapless w-100 m-0" style="width: 100%;">
+            <!-- Sidebar -->
+            <div class="column is-2 has-background-light p-4" style="border-right: 1px solid #ddd; min-height: 100%;">
+                <aside class="menu">
+                    <p class="menu-label">Mi Empresa</p>
+                    <ul class="menu-list">
+                        <li><a id="nav-dashboard" class="is-active">Dashboard</a></li>
+                        <li><a id="nav-productos">Productos</a></li>
+                        <li><a id="nav-usuarios">Usuarios</a></li>
+                    </ul>
+                    <p class="menu-label mt-5">Sesión</p>
+                    <ul class="menu-list">
+                        <li><a id="nav-logout" class="has-text-danger">Cerrar Sesión</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <!-- Main Content -->
+            <div class="column is-10 p-5">
+                
+                <!-- Dashboard View -->
+                <div id="view-dashboard" class="admin-view">
+                    <h1 class="title">¡HOLA Administrador!</h1>
+                    <div class="box">
+                        <p>Bienvenido al panel de control de Mi Tienda. Utiliza el menú lateral para gestionar los productos y usuarios del sistema.</p>
+                    </div>
+                </div>
+
+                <!-- Productos View -->
+                <div id="view-productos" class="admin-view is-hidden">
+                    <div class="is-flex is-justify-content-space-between is-align-items-center mb-4">
+                        <h1 class="title m-0">Productos</h1>
+                        <button id="btn-nuevo-producto" class="button is-dark">NUEVO PRODUCTO</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table is-fullwidth is-striped is-hoverable" id="tabla-productos">
+                            <thead>
+                                <tr>
+                                    <th>Código / ID</th>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Categoría</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Llenado por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Formulario Producto -->
+                <div id="view-form-producto" class="admin-view is-hidden">
+                    <h1 class="title" id="titulo-form-producto">NUEVO PRODUCTO</h1>
+                    <div class="box">
+                        <form id="form-producto">
+                            <input type="hidden" id="prod-id">
+                            <div class="field">
+                                <label class="label">Código / ID (Autoincrementable)</label>
+                                <div class="control">
+                                    <input class="input" type="text" id="prod-codigo" disabled placeholder="Se genera automáticamente">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Nombre (Requerido, Max 100)</label>
+                                <div class="control">
+                                    <input class="input" type="text" id="prod-nombre" required maxlength="100">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Descripción (Opcional, Max 500)</label>
+                                <div class="control">
+                                    <textarea class="textarea" id="prod-descripcion" maxlength="500"></textarea>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Precio (Requerido, Min 0)</label>
+                                        <div class="control">
+                                            <input class="input" type="number" id="prod-precio" required min="0" step="0.01">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Stock (Requerido, Min 0)</label>
+                                        <div class="control">
+                                            <input class="input" type="number" id="prod-stock" required min="0" step="1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Stock Crítico (Opcional, Min 0)</label>
+                                        <div class="control">
+                                            <input class="input" type="number" id="prod-stock-critico" min="0" step="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Categoría (Requerido)</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <select id="prod-categoria" required>
+                                            <option value="" disabled selected>Seleccione...</option>
+                                            <option value="Selecciones Nacionales">Selecciones Nacionales</option>
+                                            <option value="Clubes Chilenos">Clubes Chilenos</option>
+                                            <option value="Otros">Otros</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Imagen Principal (Opcional)</label>
+                                        <div class="control">
+                                            <input class="input" type="file" id="prod-img" accept="image/*">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Segunda Imagen (Opcional)</label>
+                                        <div class="control">
+                                            <input class="input" type="file" id="prod-img2" accept="image/*">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-grouped mt-5">
+                                <div class="control">
+                                    <button type="submit" class="button is-dark">GUARDAR</button>
+                                </div>
+                                <div class="control">
+                                    <button type="button" class="button is-light" id="btn-cancelar-producto">Cancelar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Usuarios View -->
+                <div id="view-usuarios" class="admin-view is-hidden">
+                    <div class="is-flex is-justify-content-space-between is-align-items-center mb-4">
+                        <h1 class="title m-0">Usuarios</h1>
+                        <button id="btn-nuevo-usuario" class="button is-dark">NUEVO USUARIO</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table is-fullwidth is-striped is-hoverable" id="tabla-usuarios">
+                            <thead>
+                                <tr>
+                                    <th>RUN</th>
+                                    <th>Nombre Completo</th>
+                                    <th>Correo</th>
+                                    <th>Tipo</th>
+                                    <th>Región</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Llenado por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Formulario Usuario -->
+                <div id="view-form-usuario" class="admin-view is-hidden">
+                    <h1 class="title" id="titulo-form-usuario">NUEVO USUARIO</h1>
+                    <div class="box">
+                        <form id="form-usuario">
+                            <input type="hidden" id="user-mode">
+                            <div class="field">
+                                <label class="label">RUN (Requerido, ej: 19011022K sin guión)</label>
+                                <div class="control">
+                                    <input class="input" type="text" id="user-run" required minlength="7" maxlength="9">
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Nombre (Requerido, Max 50)</label>
+                                        <div class="control">
+                                            <input class="input" type="text" id="user-nombre" required maxlength="50">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Apellidos (Requerido, Max 100)</label>
+                                        <div class="control">
+                                            <input class="input" type="text" id="user-apellidos" required maxlength="100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Correo (Requerido)</label>
+                                <div class="control">
+                                    <input class="input" type="email" id="user-correo" required maxlength="100">
+                                </div>
+                                <p class="help">Permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com</p>
+                            </div>
+                            <div class="field">
+                                <label class="label">Contraseña (Requerido)</label>
+                                <div class="control">
+                                    <input class="input" type="password" id="user-password" required minlength="4" maxlength="10">
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Tipo de Usuario (Requerido)</label>
+                                        <div class="control">
+                                            <div class="select is-fullwidth">
+                                                <select id="user-tipo" required>
+                                                    <option value="" disabled selected>Seleccione...</option>
+                                                    <option value="Administrador">Administrador</option>
+                                                    <option value="Vendedor">Vendedor</option>
+                                                    <option value="Cliente">Cliente</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Fecha Nacimiento (Opcional)</label>
+                                        <div class="control">
+                                            <input class="input" type="date" id="user-fecha">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Región</label>
+                                        <div class="control">
+                                            <div class="select is-fullwidth">
+                                                <select id="user-region" required>
+                                                    <option value="" disabled selected>Seleccione región...</option>
+                                                    <!-- Llenado por JS -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">Comuna</label>
+                                        <div class="control">
+                                            <div class="select is-fullwidth">
+                                                <select id="user-comuna" required disabled>
+                                                    <option value="" disabled selected>Seleccione comuna...</option>
+                                                    <!-- Llenado por JS -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Dirección (Requerido, Max 300)</label>
+                                <div class="control">
+                                    <input class="input" type="text" id="user-direccion" required maxlength="300">
+                                </div>
+                            </div>
+                            <div class="field is-grouped mt-5">
+                                <div class="control">
+                                    <button type="submit" class="button is-dark">GUARDAR</button>
+                                </div>
+                                <div class="control">
+                                    <button type="button" class="button is-light" id="btn-cancelar-usuario">Cancelar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <footer id="main-footer"></footer>
-
     <script type="module" src="../js/app.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const user = JSON.parse(localStorage.getItem('loggedUser'));
-            if (!user || user.tipo !== 'Administrador') {
-                window.location.href = '/index.html'; // Basic protection
-            }
-        });
-    </script>
+    <script type="module" src="../js/admin.js"></script>
 </body>
 </html>

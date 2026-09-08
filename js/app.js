@@ -15,13 +15,22 @@ if (contenedor) {
     // Averiguamos si estamos dentro de la carpeta pages/
     const isInsidePages = window.location.pathname.includes('/pages/');
 
+    // Obtener los productos actualizados de LocalStorage si existen, sino usar el estático
+    const productosActualizados = JSON.parse(localStorage.getItem('adminProductos')) || datosProductos;
+
     // Si estamos en el home (no en pages), limitamos a 8 productos. Si no, mostramos todos.
-    const productosAMostrar = isInsidePages ? datosProductos : datosProductos.slice(0, 8);
+    const productosAMostrar = isInsidePages ? productosActualizados : productosActualizados.slice(0, 8);
 
     // Iteramos el JSON para crear las tarjetas
     productosAMostrar.forEach(producto => {
-        // Ajustamos la ruta de la imagen y del enlace dependiendo de dónde estemos
-        const imgPath = isInsidePages ? `../${producto.img}` : producto.img;
+        // Ajustamos la ruta de la imagen
+        let imgPath = producto.img;
+        if (imgPath && !imgPath.startsWith('data:') && !imgPath.startsWith('http')) {
+            imgPath = isInsidePages ? `../${imgPath}` : imgPath;
+        } else if (!imgPath) {
+            imgPath = '';
+        }
+
         const linkDetalle = isInsidePages ? `detalle.html?id=${producto.id}` : `pages/detalle.html?id=${producto.id}`;
 
         const tarjeta = `
