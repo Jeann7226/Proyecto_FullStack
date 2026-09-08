@@ -419,3 +419,34 @@ a[href*="login.html"]:hover::after {
 .navbar-burger {
     color: #00b89c !important;
 }
+
+
+
+/* Limpieza de Sidebar Admin */
+aside.menu {
+    position: sticky;
+    top: 1.5rem;
+}
+
+aside.menu .menu-list a {
+    border-radius: 6px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+aside.menu .menu-list a:hover {
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+aside.menu .menu-list a.is-active {
+    background-color: #485fc7;
+    color: #ffffff !important;
+}
+
+/* Espaciado del contenedor principal */
+.column.has-background-white-ter {
+    padding: 3rem 2.5rem !important;
+}
