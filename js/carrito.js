@@ -34,11 +34,11 @@ function renderizarCarrito() {
         totalMatematico += subtotal;
 
         contenedorCarrito.innerHTML += `
-            <div class="box mb-3">
+            <div class="box mb-4">
                 <div class="columns is-vcentered is-mobile">
-                    <div class="column is-2">
-                        <figure class="image is-64x64">
-                            <img src="../${producto.img}" alt="${producto.titulo}" style="object-fit: cover; border-radius: 4px;">
+                    <div class="column is-3-mobile is-2-tablet has-text-centered">
+                        <figure class="image is-inline-block" style="width: 80px; height: 80px;">
+                            <img src="../${producto.img}" alt="${producto.titulo}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
                         </figure>
                     </div>
                     <div class="column is-4">

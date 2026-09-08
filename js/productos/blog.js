@@ -5,6 +5,7 @@ export const datosBlog = [
         resumen: "Por qué Brasil nunca más volvió a usar el uniforme blanco tras la final del Mundial de 1950.",
         contenido: "Durante las primeras cinco décadas del fútbol brasileño, la selección nacional vistió casi exclusivamente una camiseta blanca con detalles en azul en el cuello y las mangas. Sin embargo, el 16 de julio de 1950 todo cambió drásticamente. Ante casi 200.000 espectadores en el Estadio Maracaná, Brasil cayó sorpresivamente 2-1 ante Uruguay en la definición del título mundial. El impacto psicológico y social fue tan devastador que la indumentaria blanca fue declarada maldita y despojada de su representatividad patria.<br><br>En 1953, el diario Correio da Manhã, en coordinación con la Confederación Brasileña de Deportes, lanzó un concurso nacional para diseñar un uniforme completamente nuevo. La única regla obligatoria era incorporar los cuatro colores de la bandera nacional: amarillo, verde, azul y blanco. El ganador fue un joven ilustrador y escritor de 19 años llamado Aldyr Garcia Schlee, quien propuso la camiseta amarilla con vivos verdes, pantalón azul y medias blancas. Con esta nueva piel debutaron en 1954 y conquistaron su primer Mundial en Suecia 1958, convirtiendo al uniforme en el más icónico del planeta.",
         img: "assets/images/brasil/brasil1.jpeg"
+        
     },
     {
         id: 2,

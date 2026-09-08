@@ -51,3 +51,9 @@ if (contenedor) {
         contenedor.innerHTML += tarjeta;
     });
 }
+
+
+
+
+
+
