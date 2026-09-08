@@ -1,3 +1,4 @@
+import './components/alerta.js';
 document.addEventListener("DOMContentLoaded", () => {
     // Array complementario de regiones y comunas
     const regionesYcomunas = [
@@ -121,3 +122,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+

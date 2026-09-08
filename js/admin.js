@@ -1,10 +1,12 @@
+import './components/alerta.js';
 import { datosProductos } from './productos/productos.js';
 import { datosUsuarios } from './usuarios/usuarios.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     // Protección de ruta básica (simulada)
     const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-    if (!loggedUser || loggedUser.tipoUsuario !== 'Administrador') {
+    const tipoUser = loggedUser ? (loggedUser.tipoUsuario || loggedUser.tipo) : null;
+    if (!loggedUser || (tipoUser !== 'Administrador' && tipoUser !== 'Vendedor')) {
         // En un entorno real se descomentaría esto para bloquear el acceso
         // window.location.href = '../index.html'; 
     }
@@ -23,6 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const views = [viewDashboard, viewProductos, viewUsuarios, viewFormProducto, viewFormUsuario];
     const navs = [navDashboard, navProductos, navUsuarios];
+
+    // Ocultar tabs y botones si es vendedor
+    if (tipoUser === 'Vendedor') {
+        if (navUsuarios) navUsuarios.parentElement.style.display = 'none';
+        const btnNuevoProducto = document.getElementById('btn-nuevo-producto');
+        if (btnNuevoProducto) btnNuevoProducto.style.display = 'none';
+    }
 
     function hideAllViews() {
         for (let i = 0; i < views.length; i++) {
@@ -86,6 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 imgSrc = ''; 
             }
 
+            let accionesHtml = `
+                    <button class="button is-small is-info" onclick="editarProducto(${p.id})">Editar</button>
+                    <button class="button is-small is-danger" onclick="eliminarProducto(${p.id})">Eliminar</button>
+            `;
+            if (tipoUser === 'Vendedor') {
+                accionesHtml = `<span class="tag is-light">Solo lectura</span>`;
+            }
+
             tr.innerHTML = `
                 <td>${p.id}</td>
                 <td><img src="${imgSrc}" alt="${p.titulo}" class="img-admin-table"></td>
@@ -93,10 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>${p.categoria || 'N/A'}</td>
                 <td>$${p.precio}</td>
                 <td>${p.stock}</td>
-                <td>
-                    <button class="button is-small is-info" onclick="editarProducto(${p.id})">Editar</button>
-                    <button class="button is-small is-danger" onclick="eliminarProducto(${p.id})">Eliminar</button>
-                </td>
+                <td>${accionesHtml}</td>
             `;
             tbody.appendChild(tr);
         }
