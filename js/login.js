@@ -1,3 +1,5 @@
+import './components/alerta.js';
+import { datosUsuarios } from './usuarios/usuarios.js';
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("login-form");
     
@@ -47,26 +49,32 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             
             if (isValid) {
-                let userRole = "Cliente"; // Default role
-                
-                // Admin mock check
-                if (emailValue === "admin" || emailValue === "admin@duoc.cl") {
-                    if (passValue === "admin123") {
-                        userRole = "Administrador";
-                    }
+                // Buscar en datosUsuarios
+                let userRole = "Cliente";
+                const usuarioEncontrado = datosUsuarios.find(u => u.correo === emailValue && u.password === passValue);
+
+                if (usuarioEncontrado) {
+                    userRole = usuarioEncontrado.tipoUsuario;
+                } else if ((emailValue === "admin" || emailValue === "admin@duoc.cl") && passValue === "admin123") {
+                    // Fallback para admin hardcodeado
+                    userRole = "Administrador";
+                } else {
+                    alert('Credenciales incorrectas');
+                    return;
                 }
                 
                 const loggedUser = {
                     correo: emailValue,
-                    tipo: userRole
+                    tipo: userRole,
+                    tipoUsuario: userRole
                 };
                 
                 localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
                 
-                if (userRole === "Administrador") {
-                    window.location.href = "/pages/admin.html";
+                if (userRole === "Administrador" || userRole === "Vendedor") {
+                    window.location.href = "../pages/admin.html";
                 } else {
-                    window.location.href = "/index.html";
+                    window.location.href = "../index.html";
                 }
             }
         });
