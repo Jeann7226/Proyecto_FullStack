@@ -33,13 +33,19 @@ function renderizarCarrito() {
         const subtotal = producto.precio * producto.cantidad;
         totalMatematico += subtotal;
 
+        // Procesamiento de imagen para soportar base64 o rutas externas
+        let imgPath = producto.img || '';
+        if (imgPath && !imgPath.startsWith('data:') && !imgPath.startsWith('http')) {
+            imgPath = '../' + imgPath;
+        }
+
         // AQUÍ ESTÁ EL CAMBIO: Se añadió 'is-multiline' y distribución responsive por columnas
         contenedorCarrito.innerHTML += `
             <div class="box mb-3">
                 <div class="columns is-vcentered is-mobile is-multiline">
                     <!-- 1. Imagen cuadrada y adaptada -->
                     <div class="column is-3-mobile is-2-tablet has-text-centered">
-                        <img src="../${producto.img}" alt="${producto.titulo}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                        <img src="${imgPath}" alt="${producto.titulo}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
                     </div>
 
                     <!-- 2. Información del producto -->
