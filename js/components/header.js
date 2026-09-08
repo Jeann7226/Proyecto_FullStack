@@ -31,8 +31,14 @@ export function renderHeader() {
                 <a class="navbar-item" href="/">
                     <strong>Mi Tienda</strong>
                 </a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
             </div>
-            <div class="navbar-menu is-active">
+            <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" href="/index.html">Inicio</a>
                     <a class="navbar-item" href="/pages/productos.html">Productos</a>
@@ -46,7 +52,6 @@ export function renderHeader() {
                         <div class="buttons">
                             ${userMenu}
                             <a class="button is-primary is-outlined" href="/pages/carrito.html">
-                                <span class="icon">🛒</span>
                                 <strong>Carrito</strong>
                             </a>
                         </div>
@@ -60,6 +65,17 @@ export function renderHeader() {
     if (headerElement) {
         headerElement.innerHTML = headerHTML;
         
+        // Lógica del menú hamburguesa en móviles
+        const burger = headerElement.querySelector('.navbar-burger');
+        const menu = headerElement.querySelector('.navbar-menu');
+        
+        if (burger && menu) {
+            burger.addEventListener('click', () => {
+                burger.classList.toggle('is-active');
+                menu.classList.toggle('is-active');
+            });
+        }
+
         const logoutBtn = document.getElementById("logout-btn");
         if (logoutBtn) {
             logoutBtn.addEventListener("click", () => {
