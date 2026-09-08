@@ -10,15 +10,26 @@
 <body>
     <header id="main-header"></header>
 
+    <!-- NUEVO: Sección del Carrusel (Destacados) -->
+    <section class="section has-background-light py-5">
+        <div class="container">
+            <h2 class="title is-3 has-text-centered mb-5"> Productos Destacados</h2>
+            <!-- Aquí es donde el archivo carrusel.js inyectará las tarjetas -->
+            <div id="contenedor-carrusel"></div>
+        </div>
+    </section>
+
+    <!-- Sección Original: Catálogo Completo -->
     <main class="section">
         <div class="container">
-            <h1 class="title has-text-centered mb-5">Nuestros Productos</h1>
+            <h1 class="title has-text-centered mb-5">Todos Nuestros Productos</h1>
             <div id="contenedor-productos-home" class="columns is-multiline"></div>   
         </div>
     </main>
 
     <footer id="main-footer"></footer>
+    
+    <!-- El script principal que arranca la magia -->
     <script type="module" src="js/app.js"></script>
 </body>
 </html>
-
