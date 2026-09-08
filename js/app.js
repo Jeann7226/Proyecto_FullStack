@@ -12,10 +12,20 @@ const contenedor = document.getElementById("contenedor-productos-home") || docum
 if (contenedor) {
     contenedor.innerHTML = "";
     const isInsidePages = window.location.pathname.includes('/pages/');
-    const productosAMostrar = isInsidePages ? datosProductos : datosProductos.slice(0, 8);
+
+    // Conservamos la lógica de main: Productos del LocalStorage (Admin)
+    const productosActualizados = JSON.parse(localStorage.getItem('adminProductos')) || datosProductos;
+    const productosAMostrar = isInsidePages ? productosActualizados : productosActualizados.slice(0, 8);
 
     productosAMostrar.forEach(producto => {
-        const imgPath = isInsidePages ? `../${producto.img}` : producto.img;
+        // Conservamos la lógica de main: Soporte para imágenes base64 del Admin
+        let imgPath = producto.img;
+        if (imgPath && !imgPath.startsWith('data:') && !imgPath.startsWith('http')) {
+            imgPath = isInsidePages ? `../${imgPath}` : imgPath;
+        } else if (!imgPath) {
+            imgPath = '';
+        }
+
         const linkDetalle = isInsidePages ? `detalle.html?id=${producto.id}` : `pages/detalle.html?id=${producto.id}`;
 
         const tarjeta = `

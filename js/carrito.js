@@ -28,34 +28,41 @@ function renderizarCarrito() {
     contenedorCarrito.innerHTML = "";
     let totalMatematico = 0;
 
-    // Recorremos cada producto. Usamos 'index' para saber exactamente qué producto estamos modificando
+    // Recorremos cada producto
     carritoMemoria.forEach((producto, index) => {
         const subtotal = producto.precio * producto.cantidad;
         totalMatematico += subtotal;
 
+        // Procesamiento de imagen para soportar base64 o rutas externas
+        let imgPath = producto.img || '';
+        if (imgPath && !imgPath.startsWith('data:') && !imgPath.startsWith('http')) {
+            imgPath = '../' + imgPath;
+        }
+
+        // AQUÍ ESTÁ EL CAMBIO: Se añadió 'is-multiline' y distribución responsive por columnas
         contenedorCarrito.innerHTML += `
             <div class="box mb-3">
-                <div class="columns is-vcentered is-mobile">
-                    <div class="column is-2">
-                        <figure class="image is-64x64">
-                            <img src="../${producto.img}" alt="${producto.titulo}" style="object-fit: cover; border-radius: 4px;">
-                        </figure>
+                <div class="columns is-vcentered is-mobile is-multiline">
+                    <!-- 1. Imagen cuadrada y adaptada -->
+                    <div class="column is-3-mobile is-2-tablet has-text-centered">
+                        <img src="${imgPath}" alt="${producto.titulo}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
                     </div>
-                    <div class="column is-4">
-                        <h3 class="has-text-weight-bold">${producto.titulo}</h3>
-                        <p class="has-text-info has-text-weight-semibold">Talla: ${producto.talla}</p>
-                        <p class="has-text-grey">Precio unidad: $${producto.precio.toLocaleString('es-CL')}</p>
+
+                    <!-- 2. Información del producto -->
+                    <div class="column is-9-mobile is-4-tablet">
+                        <h3 class="has-text-weight-bold is-size-6">${producto.titulo}</h3>
+                        <p class="has-text-info has-text-weight-semibold is-size-7">Talla: ${producto.talla}</p>
+                        <p class="has-text-grey is-size-7">Precio unidad: $${producto.precio.toLocaleString('es-CL')}</p>
                     </div>
                     
-                    <!-- NUEVO: SELECTOR DE CANTIDAD EN EL CARRITO -->
-                    <div class="column is-3 has-text-centered">
+                    <!-- 3. Controles de cantidad (+ / -) -->
+                    <div class="column is-6-mobile is-3-tablet has-text-centered">
                         <div class="field has-addons is-justify-content-center">
                             <p class="control">
-                                <!-- Guardamos el 'index' en un data-attribute para saber cuál restar -->
                                 <button class="button is-light is-small btn-restar-carrito" data-index="${index}">-</button>
                             </p>
                             <p class="control">
-                                <input class="input is-small has-text-centered has-text-weight-bold" type="text" value="${producto.cantidad}" readonly style="width: 45px;">
+                                <input class="input is-small has-text-centered has-text-weight-bold" type="text" value="${producto.cantidad}" readonly style="width: 42px;">
                             </p>
                             <p class="control">
                                 <button class="button is-light is-small btn-sumar-carrito" data-index="${index}">+</button>
@@ -63,8 +70,11 @@ function renderizarCarrito() {
                         </div>
                     </div>
                     
-                    <div class="column is-3 has-text-right">
-                        <p class="has-text-weight-bold has-text-success is-size-5">Subtotal:<br>$${subtotal.toLocaleString('es-CL')}</p>
+                    <!-- 4. Subtotal alineado -->
+                    <div class="column is-6-mobile is-3-tablet has-text-right">
+                        <p class="has-text-weight-bold has-text-success is-size-6 is-size-5-tablet">
+                            $${subtotal.toLocaleString('es-CL')}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -74,7 +84,7 @@ function renderizarCarrito() {
     textoTotal.innerText = totalMatematico.toLocaleString('es-CL');
     seccionTotal.classList.remove("is-hidden");
 
-    // Una vez que el HTML está dibujado, activamos los botones
+    // Activamos los eventos de los botones
     activarBotonesCantidad(carritoMemoria);
 }
 
@@ -88,15 +98,11 @@ function activarBotonesCantidad(carritoMemoria) {
             const index = e.target.getAttribute("data-index");
             
             if (carritoMemoria[index].cantidad > 1) {
-                // Si tiene más de 1, simplemente le restamos 1
                 carritoMemoria[index].cantidad--; 
             } else {
-                // MAGIA AQUÍ: Si tiene 1 y presiona restar, lo eliminamos de la lista
-                // splice(index, 1) significa "párate en este índice y borra 1 elemento"
                 carritoMemoria.splice(index, 1); 
             }
             
-            // Guardamos la mochila actualizada y redibujamos la pantalla
             localStorage.setItem("carritoFutbol", JSON.stringify(carritoMemoria)); 
             renderizarCarrito(); 
         });
@@ -105,9 +111,9 @@ function activarBotonesCantidad(carritoMemoria) {
     botonesSumar.forEach(boton => {
         boton.addEventListener("click", (e) => {
             const index = e.target.getAttribute("data-index");
-            carritoMemoria[index].cantidad++; // Sumamos 1
+            carritoMemoria[index].cantidad++;
             localStorage.setItem("carritoFutbol", JSON.stringify(carritoMemoria));
-            renderizarCarrito(); // Redibujamos
+            renderizarCarrito();
         });
     });
 }

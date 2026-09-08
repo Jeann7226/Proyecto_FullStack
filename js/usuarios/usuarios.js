@@ -1,0 +1,22 @@
+export const datosUsuarios = [
+    { run: "111111111", nombre: "Admin", apellidos: "Sistema", correo: "admin@duoc.cl", fechaNacimiento: "1980-01-01", tipoUsuario: "Administrador", region: "Región Metropolitana de Santiago", comuna: "Santiago", direccion: "Calle 1" },
+    { run: "222222222", nombre: "Vendedor", apellidos: "Uno", correo: "vendedor1@duoc.cl", fechaNacimiento: "1990-05-15", tipoUsuario: "Vendedor", region: "Región de Valparaíso", comuna: "Viña del Mar", direccion: "Avenida 2" },
+    { run: "333333333", nombre: "Vendedor", apellidos: "Dos", correo: "vendedor2@duoc.cl", fechaNacimiento: "1992-08-20", tipoUsuario: "Vendedor", region: "Región del Biobío", comuna: "Concepción", direccion: "Pasaje 3" },
+    { run: "444444444", nombre: "Cliente", apellidos: "A", correo: "clienteA@gmail.com", fechaNacimiento: "1995-12-10", tipoUsuario: "Cliente", region: "Región Metropolitana de Santiago", comuna: "Maipú", direccion: "Calle 4" },
+    { run: "555555555", nombre: "Cliente", apellidos: "B", correo: "clienteB@gmail.com", fechaNacimiento: "1996-11-11", tipoUsuario: "Cliente", region: "Región Metropolitana de Santiago", comuna: "Puente Alto", direccion: "Calle 5" },
+    { run: "666666666", nombre: "Cliente", apellidos: "C", correo: "clienteC@gmail.com", fechaNacimiento: "1997-10-12", tipoUsuario: "Cliente", region: "Región de Valparaíso", comuna: "Valparaíso", direccion: "Calle 6" },
+    { run: "777777777", nombre: "Cliente", apellidos: "D", correo: "clienteD@gmail.com", fechaNacimiento: "1998-09-13", tipoUsuario: "Cliente", region: "Región del Biobío", comuna: "Talcahuano", direccion: "Calle 7" },
+    { run: "888888888", nombre: "Cliente", apellidos: "E", correo: "clienteE@gmail.com", fechaNacimiento: "1999-08-14", tipoUsuario: "Cliente", region: "Región de Coquimbo", comuna: "La Serena", direccion: "Calle 8" },
+    { run: "999999999", nombre: "Cliente", apellidos: "F", correo: "clienteF@gmail.com", fechaNacimiento: "2000-07-15", tipoUsuario: "Cliente", region: "Región de Antofagasta", comuna: "Antofagasta", direccion: "Calle 9" },
+    { run: "101010101", nombre: "Cliente", apellidos: "G", correo: "clienteG@gmail.com", fechaNacimiento: "2001-06-16", tipoUsuario: "Cliente", region: "Región de Tarapacá", comuna: "Iquique", direccion: "Calle 10" },
+    { run: "121212121", nombre: "Cliente", apellidos: "H", correo: "clienteH@gmail.com", fechaNacimiento: "2002-05-17", tipoUsuario: "Cliente", region: "Región Metropolitana de Santiago", comuna: "Providencia", direccion: "Calle 11" },
+    { run: "131313131", nombre: "Cliente", apellidos: "I", correo: "clienteI@gmail.com", fechaNacimiento: "2003-04-18", tipoUsuario: "Cliente", region: "Región de Valparaíso", comuna: "Quilpué", direccion: "Calle 12" },
+    { run: "141414141", nombre: "Cliente", apellidos: "J", correo: "clienteJ@gmail.com", fechaNacimiento: "1994-03-19", tipoUsuario: "Cliente", region: "Región del Maule", comuna: "Talca", direccion: "Calle 13" },
+    { run: "151515151", nombre: "Cliente", apellidos: "K", correo: "clienteK@gmail.com", fechaNacimiento: "1993-02-20", tipoUsuario: "Cliente", region: "Región de La Araucanía", comuna: "Temuco", direccion: "Calle 14" },
+    { run: "161616161", nombre: "Cliente", apellidos: "L", correo: "clienteL@gmail.com", fechaNacimiento: "1991-01-21", tipoUsuario: "Cliente", region: "Región de Los Lagos", comuna: "Puerto Montt", direccion: "Calle 15" },
+    { run: "171717171", nombre: "Cliente", apellidos: "M", correo: "clienteM@gmail.com", fechaNacimiento: "1989-12-22", tipoUsuario: "Cliente", region: "Región de Magallanes", comuna: "Punta Arenas", direccion: "Calle 16" },
+    { run: "181818181", nombre: "Cliente", apellidos: "N", correo: "clienteN@gmail.com", fechaNacimiento: "1988-11-23", tipoUsuario: "Cliente", region: "Región de Arica y Parinacota", comuna: "Arica", direccion: "Calle 17" },
+    { run: "191919191", nombre: "Cliente", apellidos: "O", correo: "clienteO@gmail.com", fechaNacimiento: "1987-10-24", tipoUsuario: "Cliente", region: "Región Metropolitana de Santiago", comuna: "Las Condes", direccion: "Calle 18" },
+    { run: "202020202", nombre: "Cliente", apellidos: "P", correo: "clienteP@gmail.com", fechaNacimiento: "1986-09-25", tipoUsuario: "Cliente", region: "Región de O'Higgins", comuna: "Rancagua", direccion: "Calle 19" },
+    { run: "212121212", nombre: "Cliente", apellidos: "Q", correo: "clienteQ@gmail.com", fechaNacimiento: "1985-08-26", tipoUsuario: "Cliente", region: "Región Metropolitana de Santiago", comuna: "Ñuñoa", direccion: "Calle 20" }
+];
