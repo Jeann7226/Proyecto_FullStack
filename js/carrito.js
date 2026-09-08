@@ -38,25 +38,24 @@ function renderizarCarrito() {
         const subtotal = producto.precio * producto.cantidad;
         totalMatematico += subtotal;
 
-        // Dibujamos el producto en una "caja" (box) de Bulma
+        /// Dibujamos el producto en una "caja" (box) de Bulma mejorada
         contenedorCarrito.innerHTML += `
-            <div class="box mb-3">
+            <div class="box mb-4">
                 <div class="columns is-vcentered is-mobile">
-                    <div class="column is-2">
-                        <figure class="image is-64x64">
-                            <img src="../${producto.img}" alt="${producto.titulo}" style="object-fit: cover; border-radius: 4px;">
+                    <div class="column is-3-mobile is-2-tablet has-text-centered">
+                        <figure class="image is-inline-block" style="width: 80px; height: 80px;">
+                            <img src="../${producto.img}" alt="${producto.titulo}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
                         </figure>
                     </div>
-                    <div class="column is-4">
-                        <h3 class="has-text-weight-bold">${producto.titulo}</h3>
-                        <!-- AQUÍ AGREGAMOS LA TALLA -->
-                        <p class="has-text-info has-text-weight-semibold">Talla: ${producto.talla}</p>
-                        <p class="has-text-grey">Precio unidad: $${producto.precio.toLocaleString('es-CL')}</p>
+                    <div class="column is-5-mobile is-4-tablet">
+                        <h3 class="has-text-weight-bold is-size-6">${producto.titulo}</h3>
+                        <p class="has-text-info has-text-weight-semibold is-size-7">Talla: ${producto.talla}</p>
+                        <p class="has-text-grey is-size-7">Precio unidad: $${producto.precio.toLocaleString('es-CL')}</p>
                     </div>
-                    <div class="column is-2 has-text-centered">
-                        <p class="has-text-weight-bold">Cant: ${producto.cantidad}</p>
+                    <div class="column is-2-mobile is-2-tablet has-text-centered">
+                        <p class="has-text-weight-bold is-size-6">Cant: ${producto.cantidad}</p>
                     </div>
-                    <div class="column is-4 has-text-right">
+                    <div class="column is-2-mobile is-4-tablet has-text-right">
                         <p class="has-text-weight-bold has-text-success is-size-5">Subtotal: $${subtotal.toLocaleString('es-CL')}</p>
                     </div>
                 </div>
