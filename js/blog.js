@@ -26,13 +26,13 @@ if (contenedorDetalle) {
         datosBlog.forEach(noticia => {
             const tarjeta = `
                 <div class="column is-12-mobile is-6-tablet is-4-desktop">
-                    <div class="card is-hoverable" style="height: 100%; display: flex; flex-direction: column;">
+                    <div class="card is-hoverable card-flex">
                         <div class="card-image">
                             <figure class="image is-16by9">
-                                <img src="../${noticia.img}" alt="${noticia.titulo}" style="object-fit: cover;">
+                                <img src="../${noticia.img}" alt="${noticia.titulo}" class="img-cover">
                             </figure>
                         </div>
-                        <div class="card-content" style="flex-grow: 1;">
+                        <div class="card-content flex-grow-1">
                             <h3 class="title is-4">${noticia.titulo}</h3>
                             <p class="content mt-3">${noticia.resumen}</p>
                         </div>
@@ -58,7 +58,7 @@ if (contenedorDetalle) {
                     <h1 class="title is-2 mb-4">${articulo.titulo}</h1>
                     
                     <figure class="image is-16by9 mb-5">
-                        <img src="../${articulo.img}" alt="${articulo.titulo}" style="object-fit: cover; border-radius: 8px; width: 100%; max-height: 450px;">
+                        <img src="../${articulo.img}" alt="${articulo.titulo}" class="img-blog-header">
                     </figure>
 
                     <div class="content is-medium">

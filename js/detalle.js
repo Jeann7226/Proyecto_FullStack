@@ -71,12 +71,12 @@ if (producto && contenedorDetalle) {
                 <div class="field mt-5">
                     <label class="label is-size-5 mb-3">Tallas</label>
                     <div class="buttons mt-2" id="contenedor-tallas">
-                        <button class="button is-light is-medium talla-btn" data-talla="XS" style="width: 60px;">XS</button>
-                        <button class="button is-light is-medium talla-btn" data-talla="S" style="width: 60px;">S</button>
-                        <button class="button is-light is-medium talla-btn" data-talla="M" style="width: 60px;">M</button>
-                        <button class="button is-light is-medium talla-btn" data-talla="L" style="width: 60px;">L</button>
-                        <button class="button is-light is-medium talla-btn" data-talla="XL" style="width: 60px;">XL</button>
-                        <button class="button is-light is-medium talla-btn" data-talla="2XL" style="width: 60px;">2XL</button>
+                        <button class="button is-light is-medium talla-btn w-60px" data-talla="XS">XS</button>
+                        <button class="button is-light is-medium talla-btn w-60px" data-talla="S">S</button>
+                        <button class="button is-light is-medium talla-btn w-60px" data-talla="M">M</button>
+                        <button class="button is-light is-medium talla-btn w-60px" data-talla="L">L</button>
+                        <button class="button is-light is-medium talla-btn w-60px" data-talla="XL">XL</button>
+                        <button class="button is-light is-medium talla-btn w-60px" data-talla="2XL">2XL</button>
                     </div>
                 </div>
 
@@ -88,7 +88,7 @@ if (producto && contenedorDetalle) {
                             <button class="button is-light is-medium" id="btn-restar">-</button>
                         </p>
                         <p class="control">
-                            <input class="input is-medium has-text-centered has-text-weight-bold" type="text" id="input-cantidad" value="1" readonly style="width: 60px;">
+                            <input class="input is-medium has-text-centered has-text-weight-bold w-60px" type="text" id="input-cantidad" value="1" readonly>
                         </p>
                         <p class="control">
                             <button class="button is-light is-medium" id="btn-sumar">+</button>

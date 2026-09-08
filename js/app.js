@@ -30,14 +30,17 @@ if (contenedor) {
 
         const tarjeta = `
             <article class="column is-12-mobile is-4-tablet is-3-desktop">
-                <a href="${linkDetalle}" style="display: block; height: 100%; text-decoration: none;">
-                    <div class="card is-hoverable" style="height: 100%; display: flex; flex-direction: column;">
+                <!-- Envolvemos TODA la tarjeta en un enlace <a> hacia el detalle real -->
+                <a href="${linkDetalle}" class="card-link">
+                    
+                    <!-- Le agregamos 'is-hoverable' para que haga un efecto al pasar el mouse -->
+                    <div class="card is-hoverable card-flex">
                         <div class="card-image">
                             <figure class="image is-4by3">
-                                <img src="${imgPath}" alt="${producto.titulo}" style="object-fit: cover;">
+                                <img src="${imgPath}" alt="${producto.titulo}" class="img-cover">
                             </figure>
                         </div>
-                        <header class="card-content has-text-centered" style="flex-grow: 1;">
+                        <header class="card-content has-text-centered flex-grow-1">
                             <h3 class="title is-5 has-text-dark">${producto.titulo}</h3>
                             <p class="subtitle is-6 mt-2 has-text-weight-bold has-text-success">
                                 $${producto.precio.toLocaleString('es-CL')}

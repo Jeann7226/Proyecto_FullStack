@@ -32,7 +32,7 @@ contenedor.innerHTML = `
         
         <!-- Jean Gutiérrez -->
         <article class="column is-12-mobile is-4-tablet">
-            <div class="card p-4 has-text-centered" style="height: 100%;">
+            <div class="card p-4 has-text-centered h-100">
                 <div class="card-content">
                     <p class="title is-5">Jean Gutiérrez</p>
                     <p class="subtitle is-6 has-text-grey">Desarrollador</p>
@@ -44,7 +44,7 @@ contenedor.innerHTML = `
 
         <!-- Daniel Mora -->
         <article class="column is-12-mobile is-4-tablet">
-            <div class="card p-4 has-text-centered" style="height: 100%;">
+            <div class="card p-4 has-text-centered h-100">
                 <div class="card-content">
                     <p class="title is-5">Daniel Mora</p>
                     <p class="subtitle is-6 has-text-grey">Desarrollador</p>
@@ -56,7 +56,7 @@ contenedor.innerHTML = `
 
         <!-- Darien Lizama -->
         <article class="column is-12-mobile is-4-tablet">
-            <div class="card p-4 has-text-centered" style="height: 100%;">
+            <div class="card p-4 has-text-centered h-100">
                 <div class="card-content">
                     <p class="title is-5">Darien Lizama</p>
                     <p class="subtitle is-6 has-text-grey">Desarrollador</p>

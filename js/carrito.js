@@ -45,7 +45,7 @@ function renderizarCarrito() {
                 <div class="columns is-vcentered is-mobile is-multiline">
                     <!-- 1. Imagen cuadrada y adaptada -->
                     <div class="column is-3-mobile is-2-tablet has-text-centered">
-                        <img src="${imgPath}" alt="${producto.titulo}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                        <img src="${imgPath}" alt="${producto.titulo}" class="img-carrito">
                     </div>
 
                     <!-- 2. Información del producto -->
@@ -62,7 +62,7 @@ function renderizarCarrito() {
                                 <button class="button is-light is-small btn-restar-carrito" data-index="${index}">-</button>
                             </p>
                             <p class="control">
-                                <input class="input is-small has-text-centered has-text-weight-bold" type="text" value="${producto.cantidad}" readonly style="width: 42px;">
+                                <input class="input is-small has-text-centered has-text-weight-bold w-42px" type="text" value="${producto.cantidad}" readonly>
                             </p>
                             <p class="control">
                                 <button class="button is-light is-small btn-sumar-carrito" data-index="${index}">+</button>

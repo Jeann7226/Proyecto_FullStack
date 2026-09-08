@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             tr.innerHTML = `
                 <td>${p.id}</td>
-                <td><img src="${imgSrc}" alt="${p.titulo}" width="50" height="50" style="object-fit: cover;"></td>
+                <td><img src="${imgSrc}" alt="${p.titulo}" class="img-admin-table"></td>
                 <td>${p.titulo}</td>
                 <td>${p.categoria || 'N/A'}</td>
                 <td>$${p.precio}</td>
