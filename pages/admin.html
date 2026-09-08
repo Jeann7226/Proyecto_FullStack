@@ -8,32 +8,106 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <section class="section p-0 min-vh-100-custom d-flex">
-        <div class="columns is-gapless w-100 m-0">
-            <!-- Sidebar -->
-            <div class="column is-2 has-background-light p-4 admin-sidebar">
-                <aside class="menu">
-                    <p class="menu-label">Mi Empresa</p>
-                    <ul class="menu-list">
-                        <li><a id="nav-dashboard" class="is-active">Dashboard</a></li>
-                        <li><a id="nav-productos">Productos</a></li>
-                        <li><a id="nav-usuarios">Usuarios</a></li>
-                    </ul>
-                    <p class="menu-label mt-5">Sesión</p>
-                    <ul class="menu-list">
-                        <li><a id="nav-logout" class="has-text-danger">Cerrar Sesión</a></li>
-                    </ul>
-                </aside>
-            </div>
-
-            <!-- Main Content -->
-            <div class="column is-10 p-5">
+    <section class="section p-0" style="min-height: 100vh; display: flex; overflow-x: hidden;">
+        <!-- Se removió is-gapless y se definió un contenedor flex directo -->
+        <div style="display: flex; width: 100%; min-height: 100vh;">
+            
+            
+            <aside class="has-background-dark" style="width: 260px; min-width: 260px; padding: 2rem 1.5rem; display: flex; flex-direction: column; box-shadow: 3px 0 10px rgba(0,0,0,0.15); z-index: 10;">
                 
-                <!-- Dashboard View -->
+                <p class="menu-label has-text-grey-light has-text-weight-bold is-size-7" style="margin-bottom: 0.75rem; letter-spacing: 1px;">
+                    MI EMPRESA
+                </p>
+                <ul class="menu-list" style="margin-bottom: 2rem;">
+                    <li style="margin-bottom: 0.35rem;">
+                        <a id="nav-dashboard" class="is-active has-background-primary has-text-white has-text-weight-semibold" style="border-radius: 6px; padding: 0.65rem 1rem; display: block;">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 0.35rem;">
+                        <a id="nav-productos" class="has-text-light" style="border-radius: 6px; padding: 0.65rem 1rem; display: block;">
+                            Productos
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 0.35rem;">
+                        <a id="nav-usuarios" class="has-text-light" style="border-radius: 6px; padding: 0.65rem 1rem; display: block;">
+                            Usuarios
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="menu-label has-text-grey-light has-text-weight-bold is-size-7" style="margin-bottom: 0.75rem; letter-spacing: 1px;">
+                    ACCESOS
+                </p>
+                <ul class="menu-list" style="margin-bottom: 2rem;">
+                    <li>
+                        <a href="../index.html" class="has-text-grey-lighter" style="border-radius: 6px; padding: 0.65rem 1rem; display: block;">
+                            Ir a la Tienda
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="menu-label has-text-grey-light has-text-weight-bold is-size-7" style="margin-bottom: 0.75rem; letter-spacing: 1px;">
+                    SESIÓN
+                </p>
+                <ul class="menu-list">
+                    <li>
+                        <a id="nav-logout" class="has-text-danger has-text-weight-semibold" style="border-radius: 6px; padding: 0.65rem 1rem; display: block;">
+                            Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            
+            <main class="has-background-white-ter" style="flex-grow: 1; padding: 3rem; overflow-y: auto;">
+                
+                <!-- Vista Dashboard -->
                 <div id="view-dashboard" class="admin-view">
-                    <h1 class="title">¡HOLA Administrador!</h1>
-                    <div class="box">
-                        <p>Bienvenido al panel de control de Mi Tienda. Utiliza el menú lateral para gestionar los productos y usuarios del sistema.</p>
+                    
+                    <!-- Encabezado con buen espacio -->
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem;">
+                        <div>
+                            <h1 class="title is-3" style="margin: 0 0 0.5rem 0 !important; line-height: 1.2;">
+                                ¡HOLA Administrador! 
+                            </h1>
+                            <p class="subtitle is-6 has-text-grey" style="margin: 0 !important;">
+                                Panel de control de gestión y resumen general del sistema.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="../index.html" class="button is-dark is-outlined">Ver Tienda</a>
+                        </div>
+                    </div>
+
+                    <!-- Métricas de resumen (KPIs) -->
+                    <div class="columns is-multiline mb-5">
+                        <div class="column is-4">
+                            <div class="box has-text-centered p-4" style="border-radius: 8px;">
+                                <p class="heading has-text-grey">Camisetas Activas</p>
+                                <p class="title is-4 has-text-info">24</p>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="box has-text-centered p-4" style="border-radius: 8px;">
+                                <p class="heading has-text-grey">Usuarios Registrados</p>
+                                <p class="title is-4 has-text-primary">152</p>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="box has-text-centered p-4" style="border-radius: 8px;">
+                                <p class="heading has-text-grey">Estado Sistema</p>
+                                <p class="title is-4 has-text-success">En línea</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Caja de información -->
+                    <div class="box p-5" style="border-radius: 8px;">
+                        <h2 class="title is-5 mb-2">Gestión del Sistema</h2>
+                        <p class="has-text-grey-dark">
+                            Bienvenido al panel de control de Mi Tienda. Utiliza el menú lateral para gestionar los productos del catálogo y los usuarios registrados en el sistema.
+                        </p>
                     </div>
                 </div>
 
@@ -295,7 +369,7 @@
                     </div>
                 </div>
 
-            </div>
+            </main>
         </div>
     </section>
 
