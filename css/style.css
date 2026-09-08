@@ -245,6 +245,120 @@ a[href*="login.html"]:hover::after {
 
 
 
+/* ===================================================
+   GALERÍA ESTILO NIKE (DETALLE DE PRODUCTO)
+   =================================================== */
+
+.galeria-contenedor {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+/* Columna de miniaturas a la izquierda */
+.galeria-miniaturas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.miniatura-item {
+    width: 65px;
+    height: 65px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #f0f2f5;
+    transition: all 0.2s ease;
+}
+
+.miniatura-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.miniatura-item:hover {
+    border-color: #cbd5e1;
+}
+
+/* Borde oscuro para indicar la que está seleccionada */
+.miniatura-item.activa {
+    border-color: #1a1e24;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen principal grande con flechas */
+.galeria-principal {
+    position: relative;
+    flex-grow: 1;
+    height: 480px;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e1e4e8;
+}
+
+.galeria-principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.2s ease;
+}
+
+/* Flechitas sobre la imagen */
+.btn-flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+.btn-flecha:hover {
+    background-color: #ffffff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.btn-flecha.izq {
+    left: 12px;
+}
+
+.btn-flecha.der {
+    right: 12px;
+}
+
+/* En celulares las miniaturas pasan abajo */
+@media screen and (max-width: 768px) {
+    .galeria-contenedor {
+        flex-direction: column-reverse;
+    }
+    .galeria-miniaturas {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .galeria-principal {
+        height: 320px;
+        width: 100%;
+    }
+}
+
+
 
 
 
