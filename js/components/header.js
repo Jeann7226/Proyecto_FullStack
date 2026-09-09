@@ -1,11 +1,13 @@
 export function renderHeader() {
     const user = JSON.parse(localStorage.getItem('loggedUser'));
+    const inPages = window.location.pathname.includes('/pages/');
+    const basePath = inPages ? '../' : './';
     
     let userMenu = `
-        <a class="button is-light" href="/pages/login.html">
+        <a class="button is-light" href="${basePath}pages/login.html">
             <strong>Iniciar Sesión</strong>
         </a>
-        <a class="button is-primary" href="/pages/registro.html">
+        <a class="button is-primary" href="${basePath}pages/registro.html">
             <strong>Registro</strong>
         </a>
     `;
@@ -21,15 +23,15 @@ export function renderHeader() {
         `;
         
         if (user.tipo === 'Administrador') {
-            adminLink = `<a class="navbar-item" href="/pages/admin.html">Admin</a>`;
+            adminLink = `<a class="navbar-item" href="${basePath}pages/admin.html">Admin</a>`;
         }
     }
 
     const headerHTML = `
         <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="/">
-                    <img src="../assets/images/logo/logo.png" alt="logo" class="img-cover">
+                <a class="navbar-item" href="${basePath}index.html">
+                    <img src="${basePath}assets/images/logo/logo.png" alt="logo" class="img-cover">
                 </a>
 
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -40,18 +42,18 @@ export function renderHeader() {
             </div>
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="/index.html">Inicio</a>
-                    <a class="navbar-item" href="/pages/productos.html">Productos</a>
-                    <a class="navbar-item" href="/pages/nosotros.html">Nosotros</a>
-                    <a class="navbar-item" href="/pages/blog.html">Blog</a>
-                    <a class="navbar-item" href="/pages/contacto.html">Contacto</a>
+                    <a class="navbar-item" href="${basePath}index.html">Inicio</a>
+                    <a class="navbar-item" href="${basePath}pages/productos.html">Productos</a>
+                    <a class="navbar-item" href="${basePath}pages/nosotros.html">Nosotros</a>
+                    <a class="navbar-item" href="${basePath}pages/blog.html">Blog</a>
+                    <a class="navbar-item" href="${basePath}pages/contacto.html">Contacto</a>
                     ${adminLink}
                 </div>
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
                             ${userMenu}
-                            <a class="button is-primary is-outlined" href="/pages/carrito.html">
+                            <a class="button is-primary is-outlined" href="${basePath}pages/carrito.html">
                                 <strong>Carrito</strong>
                             </a>
                         </div>
