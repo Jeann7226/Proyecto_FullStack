@@ -93,6 +93,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // variables de los productos
     let productosLocales = JSON.parse(localStorage.getItem('adminProductos')) || datosProductos;
+    
+    // alerta de stock critico
+    const productosCriticos = productosLocales.filter(p => p.stock !== undefined && p.stock <= (p.stockCritico || 0));
+    if (productosCriticos.length > 0) {
+        const nombres = productosCriticos.map(p => p.titulo).join(", ");
+        alert(`¡Atención! Los siguientes productos tienen stock crítico: ${nombres}`);
+    }
+
     let imgBase64 = "";
     let img2Base64 = "";
     let currentProdEditId = null;

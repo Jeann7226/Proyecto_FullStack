@@ -1,6 +1,7 @@
 import './components/alerta.js';
 import { renderHeader } from "./components/header.js";
 import { renderFooter } from "./components/footer.js";
+import { datosProductos } from "./data/productos.js";
 
 // cargamos el menu y el footer
 renderHeader();
@@ -131,6 +132,20 @@ if (btnVaciar) {
 const btnComprar = document.getElementById("btn-comprar");
 if (btnComprar) {
     btnComprar.addEventListener("click", () => {
+        const carritoMemoria = JSON.parse(localStorage.getItem("carritoFutbol")) || [];
+        if (carritoMemoria.length === 0) return;
+
+        let adminProductos = JSON.parse(localStorage.getItem("adminProductos")) || datosProductos;
+        
+        carritoMemoria.forEach(itemCarrito => {
+            const prod = adminProductos.find(p => p.id === itemCarrito.id);
+            if (prod) {
+                prod.stock = Math.max(0, (prod.stock || 0) - itemCarrito.cantidad);
+            }
+        });
+        
+        localStorage.setItem("adminProductos", JSON.stringify(adminProductos));
+
         alert("¡Gracias por tu compra! Tu pedido está siendo procesado.");
         localStorage.removeItem("carritoFutbol");
         renderizarCarrito();
