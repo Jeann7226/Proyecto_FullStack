@@ -1,6 +1,7 @@
 import './components/alerta.js';
-import { datosProductos } from './productos/productos.js';
-import { datosUsuarios } from './usuarios/usuarios.js';
+import { datosProductos } from './data/productos.js';
+import { datosUsuarios } from './data/usuarios.js';
+import { regionesYcomunas } from './data/regiones.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     // Protección de ruta básica (simulada)
@@ -9,6 +10,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!loggedUser || (tipoUser !== 'Administrador' && tipoUser !== 'Vendedor')) {
         // En un entorno real se descomentaría esto para bloquear el acceso
         // window.location.href = '../index.html'; 
+    }
+
+    // --- Menú Burger Móvil ---
+    const adminBurger = document.getElementById('admin-burger');
+    const adminSidebar = document.getElementById('admin-sidebar');
+    if (adminBurger && adminSidebar) {
+        adminBurger.addEventListener('click', () => {
+            adminBurger.classList.toggle('is-active');
+            adminSidebar.classList.toggle('is-active');
+        });
+        
+        // Ocultar sidebar al hacer clic en una opción (en móvil)
+        const menuLinks = adminSidebar.querySelectorAll('.admin-menu-link');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1023) {
+                    adminBurger.classList.remove('is-active');
+                    adminSidebar.classList.remove('is-active');
+                }
+            });
+        });
     }
 
     // --- Navegación del Panel ---
@@ -252,22 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem('adminUsuarios', JSON.stringify(usuariosLocales));
     }
 
-    // Array de Regiones y Comunas
-    const regionesYcomunas = [
-        { region: "Región Metropolitana de Santiago", comunas: ["Santiago", "Puente Alto", "Maipú", "La Florida", "Las Condes", "Providencia", "Ñuñoa"] },
-        { region: "Región de Valparaíso", comunas: ["Valparaíso", "Viña del Mar", "Quilpué", "Villa Alemana"] },
-        { region: "Región del Biobío", comunas: ["Concepción", "Talcahuano", "Los Ángeles", "San Pedro de la Paz"] },
-        { region: "Región de La Araucanía", comunas: ["Temuco", "Padre Las Casas", "Villarrica"] },
-        { region: "Región de Ñuble", comunas: ["Chillán", "San Carlos", "Bulnes"] },
-        { region: "Región de Coquimbo", comunas: ["La Serena", "Coquimbo", "Ovalle"] },
-        { region: "Región de Antofagasta", comunas: ["Antofagasta", "Calama", "Tocopilla"] },
-        { region: "Región de Tarapacá", comunas: ["Iquique", "Alto Hospicio"] },
-        { region: "Región del Maule", comunas: ["Talca", "Curicó", "Linares"] },
-        { region: "Región de Los Lagos", comunas: ["Puerto Montt", "Osorno", "Castro"] },
-        { region: "Región de Magallanes", comunas: ["Punta Arenas", "Puerto Natales"] },
-        { region: "Región de Arica y Parinacota", comunas: ["Arica", "Putre"] },
-        { region: "Región de O'Higgins", comunas: ["Rancagua", "San Fernando"] }
-    ];
+    // Array de Regiones y Comunas se importa desde ./data/regiones.js
 
     const selectRegion = document.getElementById('user-region');
     const selectComuna = document.getElementById('user-comuna');

@@ -1,29 +1,7 @@
 import './components/alerta.js';
-document.addEventListener("DOMContentLoaded", () => {
-    // Array complementario de regiones y comunas
-    const regionesYcomunas = [
-        {
-            region: "Región Metropolitana de Santiago",
-            comunas: ["Santiago", "Puente Alto", "Maipú", "La Florida"]
-        },
-        {
-            region: "Región de Valparaíso",
-            comunas: ["Valparaíso", "Viña del Mar", "Quilpué", "Villa Alemana"]
-        },
-        {
-            region: "Región del Biobío",
-            comunas: ["Concepción", "Talcahuano", "Los Ángeles", "San Pedro de la Paz"]
-        },
-        {
-            region: "Región de La Araucanía",
-            comunas: ["Temuco", "Padre Las Casas", "Villarrica"]
-        },
-        {
-            region: "Región de Ñuble",
-            comunas: ["Chillán", "San Carlos", "Bulnes"]
-        }
-    ];
+import { regionesYcomunas } from './data/regiones.js';
 
+document.addEventListener("DOMContentLoaded", () => {
     const regionSelect = document.getElementById("reg-region");
     const comunaSelect = document.getElementById("reg-comuna");
 

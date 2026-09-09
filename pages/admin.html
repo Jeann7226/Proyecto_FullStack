@@ -8,51 +8,65 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <section class="section p-0" style="min-height: 100vh; display: flex; overflow-x: hidden;">
+    <section class="section p-0 admin-section">
+        <!-- Navbar Móvil -->
+        <nav class="navbar is-dark is-hidden-desktop admin-mobile-nav" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item has-text-weight-bold" href="#">
+                    ADMIN - MI EMPRESA
+                </a>
+                <a role="button" class="navbar-burger" id="admin-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+        </nav>
+
         <!-- Se removió is-gapless y se definió un contenedor flex directo -->
-        <div style="display: flex; width: 100%; min-height: 100vh;">
+        <div class="admin-container">
             
             
-            <aside class="has-background-dark" style="width: 260px; min-width: 260px; padding: 2rem 1.5rem; display: flex; flex-direction: column; box-shadow: 3px 0 10px rgba(0,0,0,0.15); z-index: 10;">
+            <aside class="has-background-dark admin-sidebar" id="admin-sidebar">
                 
-                <p class="menu-label has-text-grey-light has-text-weight-bold is-size-7" style="margin-bottom: 0.75rem; letter-spacing: 1px;">
+                <p class="menu-label has-text-grey-light has-text-weight-bold is-size-7 admin-menu-label">
                     MI EMPRESA
                 </p>
-                <ul class="menu-list" style="margin-bottom: 2rem;">
-                    <li style="margin-bottom: 0.35rem;">
-                        <a id="nav-dashboard" class="is-active has-background-primary has-text-white has-text-weight-semibold" style="border-radius: 6px; padding: 0.65rem 1rem; display: block;">
+                <ul class="menu-list admin-menu-list">
+                    <li class="admin-menu-item">
+                        <a id="nav-dashboard" class="is-active has-background-primary has-text-white has-text-weight-semibold admin-menu-link">
                             Dashboard
                         </a>
                     </li>
-                    <li style="margin-bottom: 0.35rem;">
-                        <a id="nav-productos" class="has-text-light" style="border-radius: 6px; padding: 0.65rem 1rem; display: block;">
+                    <li class="admin-menu-item">
+                        <a id="nav-productos" class="has-text-light admin-menu-link">
                             Productos
                         </a>
                     </li>
-                    <li style="margin-bottom: 0.35rem;">
-                        <a id="nav-usuarios" class="has-text-light" style="border-radius: 6px; padding: 0.65rem 1rem; display: block;">
+                    <li class="admin-menu-item">
+                        <a id="nav-usuarios" class="has-text-light admin-menu-link">
                             Usuarios
                         </a>
                     </li>
                 </ul>
 
-                <p class="menu-label has-text-grey-light has-text-weight-bold is-size-7" style="margin-bottom: 0.75rem; letter-spacing: 1px;">
+                <p class="menu-label has-text-grey-light has-text-weight-bold is-size-7 admin-menu-label">
                     ACCESOS
                 </p>
-                <ul class="menu-list" style="margin-bottom: 2rem;">
+                <ul class="menu-list admin-menu-list">
                     <li>
-                        <a href="../index.html" class="has-text-grey-lighter" style="border-radius: 6px; padding: 0.65rem 1rem; display: block;">
+                        <a href="../index.html" class="has-text-grey-lighter admin-menu-link">
                             Ir a la Tienda
                         </a>
                     </li>
                 </ul>
 
-                <p class="menu-label has-text-grey-light has-text-weight-bold is-size-7" style="margin-bottom: 0.75rem; letter-spacing: 1px;">
+                <p class="menu-label has-text-grey-light has-text-weight-bold is-size-7 admin-menu-label">
                     SESIÓN
                 </p>
                 <ul class="menu-list">
                     <li>
-                        <a id="nav-logout" class="has-text-danger has-text-weight-semibold" style="border-radius: 6px; padding: 0.65rem 1rem; display: block;">
+                        <a id="nav-logout" class="has-text-danger has-text-weight-semibold admin-menu-link">
                             Cerrar Sesión
                         </a>
                     </li>
@@ -60,18 +74,18 @@
             </aside>
 
             
-            <main class="has-background-white-ter" style="flex-grow: 1; padding: 3rem; overflow-y: auto;">
+            <main class="has-background-white-ter admin-main">
                 
                 <!-- Vista Dashboard -->
                 <div id="view-dashboard" class="admin-view">
                     
                     <!-- Encabezado con buen espacio -->
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem;">
+                    <div class="admin-header-container">
                         <div>
-                            <h1 class="title is-3" style="margin: 0 0 0.5rem 0 !important; line-height: 1.2;">
+                            <h1 class="title is-3 admin-header-title">
                                 ¡HOLA Administrador! 
                             </h1>
-                            <p class="subtitle is-6 has-text-grey" style="margin: 0 !important;">
+                            <p class="subtitle is-6 has-text-grey admin-header-subtitle">
                                 Panel de control de gestión y resumen general del sistema.
                             </p>
                         </div>
@@ -83,19 +97,19 @@
                     <!-- Métricas de resumen (KPIs) -->
                     <div class="columns is-multiline mb-5">
                         <div class="column is-4">
-                            <div class="box has-text-centered p-4" style="border-radius: 8px;">
+                            <div class="box has-text-centered p-4 admin-metric-box">
                                 <p class="heading has-text-grey">Camisetas Activas</p>
                                 <p class="title is-4 has-text-info">24</p>
                             </div>
                         </div>
                         <div class="column is-4">
-                            <div class="box has-text-centered p-4" style="border-radius: 8px;">
+                            <div class="box has-text-centered p-4 admin-metric-box">
                                 <p class="heading has-text-grey">Usuarios Registrados</p>
                                 <p class="title is-4 has-text-primary">152</p>
                             </div>
                         </div>
                         <div class="column is-4">
-                            <div class="box has-text-centered p-4" style="border-radius: 8px;">
+                            <div class="box has-text-centered p-4 admin-metric-box">
                                 <p class="heading has-text-grey">Estado Sistema</p>
                                 <p class="title is-4 has-text-success">En línea</p>
                             </div>
@@ -103,7 +117,7 @@
                     </div>
 
                     <!-- Caja de información -->
-                    <div class="box p-5" style="border-radius: 8px;">
+                    <div class="box p-5 admin-metric-box">
                         <h2 class="title is-5 mb-2">Gestión del Sistema</h2>
                         <p class="has-text-grey-dark">
                             Bienvenido al panel de control de Mi Tienda. Utiliza el menú lateral para gestionar los productos del catálogo y los usuarios registrados en el sistema.

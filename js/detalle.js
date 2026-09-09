@@ -1,7 +1,7 @@
 import './components/alerta.js';
 import { renderHeader } from "./components/header.js";
 import { renderFooter } from "./components/footer.js";
-import { datosProductos } from "./productos/productos.js";
+import { datosProductos } from "./data/productos.js";
 
 renderHeader();
 renderFooter();

@@ -1,6 +1,6 @@
 import { renderHeader } from "./components/header.js";
 import { renderFooter } from "./components/footer.js";
-import { datosBlog } from "./productos/blog.js";
+import { datosBlog } from "./data/blog.js";
 
 renderHeader();
 renderFooter();

@@ -421,3 +421,238 @@ aside.menu .menu-list a.is-active {
 .column.has-background-white-ter {
     padding: 3rem 2.5rem !important;
 }
+/* ===================================================
+   8. COMPONENTE ALERTA
+   =================================================== */
+#custom-alert-modal {
+    z-index: 9999;
+}
+
+#custom-alert-modal .modal-background {
+    background-color: rgba(0,0,0,0.6);
+}
+
+#custom-alert-modal .modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+#custom-alert-modal .box {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+#custom-alert-close {
+    width: 100%;
+}
+
+/* ===================================================
+   9. CARRUSEL
+   =================================================== */
+.carrusel-slide-link {
+    min-width: 100%;
+    display: block;
+    position: relative;
+}
+
+.carrusel-slide-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+}
+
+.carrusel-slide-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.8);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#caja-banner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+#btn-izq-banner, #btn-der-banner {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    opacity: 0.8;
+    border: 2px solid white;
+}
+
+#btn-izq-banner { left: 15px; }
+#btn-der-banner { right: 15px; }
+
+#pista-banner {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#pista-banner::-webkit-scrollbar {
+    display: none;
+}
+
+#pista-banner > a {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+/* ===================================================
+   10. FOOTER
+   =================================================== */
+.custom-footer {
+    border-top: 1px solid #4a4a4a;
+    padding: 4rem 1.5rem 2rem;
+    font-size: 0.9rem;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    line-height: 2.2;
+}
+
+.footer-link {
+    text-decoration: none;
+    outline: none;
+}
+
+.footer-socials {
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-social-link {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-weight: bold;
+    outline: none;
+}
+
+.footer-social-link-small {
+    font-size: 0.75rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid #4a4a4a;
+}
+
+/* ===================================================
+   11. ADMIN DASHBOARD
+   =================================================== */
+.admin-section {
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+}
+
+.admin-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    width: 260px;
+    min-width: 260px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.15);
+    z-index: 10;
+}
+
+.admin-menu-label {
+    margin-bottom: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.admin-menu-list {
+    margin-bottom: 2rem;
+}
+
+.admin-menu-item {
+    margin-bottom: 0.35rem;
+}
+
+.admin-menu-link {
+    border-radius: 6px;
+    padding: 0.65rem 1rem;
+    display: block;
+}
+
+.admin-main {
+    flex-grow: 1;
+    padding: 3rem;
+    overflow-y: auto;
+}
+
+.admin-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+}
+
+.admin-header-title {
+    margin: 0 0 0.5rem 0 !important;
+    line-height: 1.2;
+}
+
+.admin-header-subtitle {
+    margin: 0 !important;
+}
+
+.admin-metric-box {
+    border-radius: 8px !important;
+}
+
+
+/* ===================================================
+   12. ADMIN RESPONSIVE
+   =================================================== */
+.admin-section {
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1023px) {
+    .admin-container {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .admin-sidebar {
+        width: 100%;
+        min-width: 100%;
+        display: none;
+        position: static;
+    }
+    .admin-sidebar.is-active {
+        display: flex;
+    }
+    .admin-mobile-nav {
+        width: 100%;
+    }
+    .admin-main {
+        padding: 1.5rem !important;
+    }
+}
+

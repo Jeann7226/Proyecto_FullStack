@@ -1,5 +1,5 @@
 import './components/alerta.js';
-import { datosUsuarios } from './usuarios/usuarios.js';
+import { datosUsuarios } from './data/usuarios.js';
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("login-form");
     
