@@ -22,7 +22,7 @@ export function renderHeader() {
             </a>
         `;
         
-        if (user.tipo === 'Administrador') {
+        if (user.tipo === 'Administrador' || user.tipo === 'Vendedor') {
             adminLink = `<a class="navbar-item" href="${basePath}pages/admin.html">Admin</a>`;
         }
     }
@@ -82,7 +82,7 @@ export function renderHeader() {
         if (logoutBtn) {
             logoutBtn.addEventListener("click", () => {
                 localStorage.removeItem("loggedUser");
-                window.location.href = "/index.html";
+                window.location.href = basePath + "index.html";
             });
         }
     }
