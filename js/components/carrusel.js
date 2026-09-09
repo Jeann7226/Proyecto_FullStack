@@ -41,7 +41,7 @@ export function renderCarrusel() {
     const pista = document.getElementById("pista-banner");
     const cajaBanner = document.getElementById("caja-banner");
     
-    // Funciones para deslizar manual
+    // pa mover las fotos a mano
     document.getElementById("btn-izq-banner").addEventListener("click", () => {
         pista.scrollBy({ left: -pista.offsetWidth, behavior: 'smooth' });
     });
@@ -50,26 +50,26 @@ export function renderCarrusel() {
         pista.scrollBy({ left: pista.offsetWidth, behavior: 'smooth' });
     });
 
-    // NUEVO: Lógica de Autoplay
+    // logica pa que se mueva sola la cosa
     let intervaloAutoPlay;
 
     function iniciarAutoPlay() {
         intervaloAutoPlay = setInterval(() => {
-            // Verificamos si llegamos al final del carrusel
+            // vemos si tamos en la ultima foto
             if (pista.scrollLeft + pista.offsetWidth >= pista.scrollWidth - 10) {
-                // Volver al principio
+                // volvemos al incio
                 pista.scrollTo({ left: 0, behavior: 'smooth' });
             } else {
-                // Avanzar una imagen
+                // pasamos a la que sigue
                 pista.scrollBy({ left: pista.offsetWidth, behavior: 'smooth' });
             }
-        }, 4000); // Cambia de imagen cada 4000 milisegundos (4 segundos)
+        }, 4000); // cambiamos cada 4 segundos
     }
 
-    // Pausar si el mouse está encima, reanudar si se quita
+    // si pone el mouse encima pausamos
     cajaBanner.addEventListener("mouseenter", () => clearInterval(intervaloAutoPlay));
     cajaBanner.addEventListener("mouseleave", iniciarAutoPlay);
 
-    // Arrancamos el autoplay al cargar
+    // le damos start de una al cargar
     iniciarAutoPlay();
 }

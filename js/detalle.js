@@ -9,14 +9,14 @@ renderFooter();
 const urlParams = new URLSearchParams(window.location.search);
 const idProducto = parseInt(urlParams.get("id")) || 1;
 
-// Obtener los productos actualizados de LocalStorage si existen, sino usar el estático
+// buscamos productos en memoria o usamos los por defecto
 const productosActualizados = JSON.parse(localStorage.getItem('adminProductos')) || datosProductos;
 const producto = productosActualizados.find(p => p.id === idProducto);
 
 const contenedorDetalle = document.getElementById("contenedor-detalle");
 
 if (producto && contenedorDetalle) {
-    // Procesar las rutas de las imágenes para soportar Base64 y estáticas
+    // arreglamos la ruta de las fotos
     let imgSrc = producto.img || '';
     if (imgSrc && !imgSrc.startsWith('data:') && !imgSrc.startsWith('http')) {
         imgSrc = '../' + imgSrc;
@@ -26,7 +26,7 @@ if (producto && contenedorDetalle) {
     if (imgSrc2 && !imgSrc2.startsWith('data:') && !imgSrc2.startsWith('http')) {
         imgSrc2 = '../' + imgSrc2;
     } else if (!imgSrc2 && !imgSrc.startsWith('data:') && imgSrc) {
-        // Fallback si no hay img2 y la imagen no es base64 (ej: '../assets/lau1.jpg' -> '../assets/lau2.jpg')
+        // si no tiene segunda foto probamos algo por defecto
         imgSrc2 = imgSrc.replace('1.', '2.');
     }
 
@@ -61,7 +61,7 @@ if (producto && contenedorDetalle) {
                 </div>
             </div>
 
-            <!-- Columna Datos de Compra (Talla, Botón, etc.) -->
+            <!-- Columna Datos de Compra (Talla, Boton, etc.) -->
             <div class="column is-5">
                 <h1 class="title is-3">${producto.titulo}</h1>
                 <p class="subtitle is-4 has-text-success has-text-weight-bold">$${producto.precio.toLocaleString('es-CL')}</p>
@@ -97,13 +97,13 @@ if (producto && contenedorDetalle) {
                     </div>
                 </div>
                 
-                <!-- Botón comprar -->
+                <!-- Boton comprar -->
                 <button class="button is-primary is-fullwidth is-medium mt-4" id="btn-agregar">Agregar al Carrito</button>
             </div>
         </div>
     `;
 
-    // LÓGICA DE INTERACCIÓN (FLECHAS Y MINIATURAS)
+    // lo de las flechitas y fotos chicas
     const imgGrande = document.getElementById("img-grande");
     const miniaturas = document.querySelectorAll(".miniatura-item");
     const btnIzq = document.getElementById("flecha-izq");
@@ -114,16 +114,16 @@ if (producto && contenedorDetalle) {
         if (indexActual < 0) indexActual = imagenes.length - 1;
         if (indexActual >= imagenes.length) indexActual = 0;
 
-        // Cambiar la foto principal
+        // cambiamos la foto grande
         imgGrande.src = imagenes[indexActual];
 
-        // Resaltar miniatura activa
+        // marcamos cual foto chica esta viendose
         miniaturas.forEach((mini, i) => {
             mini.classList.toggle("activa", i === indexActual);
         });
     }
 
-    // Clic en miniaturas
+    // al pinchar foto chica
     miniaturas.forEach(miniatura => {
         miniatura.addEventListener("click", () => {
             const idx = parseInt(miniatura.dataset.index);
@@ -131,13 +131,13 @@ if (producto && contenedorDetalle) {
         });
     });
 
-    // Clic en flechas
+    // al pinchar flechas
     if (btnIzq && btnDer) {
         btnIzq.addEventListener("click", () => actualizarGaleria(indexActual - 1));
         btnDer.addEventListener("click", () => actualizarGaleria(indexActual + 1));
     }
 
-    // --- LÓGICA DE TALLAS, CANTIDAD Y CARRITO ---
+    // tallas sumar cosas y agregar al carrito
     const btnAgregar = document.getElementById("btn-agregar");
     const botonesTalla = document.querySelectorAll(".talla-btn");
     const btnRestar = document.getElementById("btn-restar");
@@ -147,7 +147,7 @@ if (producto && contenedorDetalle) {
     let tallaElegida = ""; 
     let cantidadElegida = 1;
 
-    // 1. Lógica de las tallas (botones)
+    // botonera de tallas
     if (botonesTalla.length > 0) {
         botonesTalla.forEach(boton => {
             boton.addEventListener("click", (e) => {
@@ -163,7 +163,7 @@ if (producto && contenedorDetalle) {
         });
     }
 
-    // 2. Lógica de sumar y restar cantidad
+    // lo de mas y menos cantidad
     if (btnRestar && btnSumar && inputCantidad) {
         btnRestar.addEventListener("click", () => {
             if (cantidadElegida > 1) { 
@@ -178,11 +178,11 @@ if (producto && contenedorDetalle) {
         });
     }
 
-    // 3. Lógica de agregar al carrito
+    // boton de agregar al carrito
     if (btnAgregar) {
         btnAgregar.addEventListener("click", () => {
             if (tallaElegida === "") {
-                alert("⚠️ Por favor, selecciona una talla antes de agregar al carrito.");
+                alert("Por favor, selecciona una talla antes de agregar al carrito.");
                 return; 
             }
 
@@ -196,7 +196,7 @@ if (producto && contenedorDetalle) {
             }
             
             localStorage.setItem("carritoFutbol", JSON.stringify(carritoMemoria));
-            alert(`¡Se agregaron ${cantidadElegida} camiseta(s) ${producto.titulo} (Talla ${tallaElegida}) al carrito! ⚽`);
+            alert(`Se agregaron ${cantidadElegida} camiseta(s) ${producto.titulo} (Talla ${tallaElegida}) al carrito!`);
         });
     }
 }

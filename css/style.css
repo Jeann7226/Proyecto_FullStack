@@ -137,7 +137,7 @@ a[href*="login.html"] {
     text-decoration: none !important;
 }
 
-/* Línea animada inferior en hover */
+/* linea animada inferior en hover */
 .navbar.is-dark .navbar-start a.navbar-item::after,
 .navbar-brand a.navbar-item::after,
 a[href*="login.html"]::after {
@@ -281,8 +281,7 @@ a[href*="login.html"]:hover::after {
     }
 }
 
-
-/* Corrección de tarjetas del Blog */
+/* correccion de tarjetas del blog */
 .card {
     display: flex;
     flex-direction: column;
@@ -329,16 +328,16 @@ a[href*="login.html"]:hover::after {
    6. CORRECCIONES PARA MÓVILES (NAVBAR DROPDOWN)
    =================================================== */
 @media screen and (max-width: 1023px) {
-    /* Forzar que el menú desplegable en celular tenga fondo oscuro */
+    /* forzar que el menu desplegable en celular tenga fondo oscuro */
     .navbar-menu.is-active {
-        background-color: #363636 !important; /* Color is-dark de Bulma */
+        background-color: #363636 !important; /* color isdark de bulma */
     }
     .navbar-menu.is-active .navbar-item {
         color: #ffffff !important;
     }
 }
 
-/* Cambiar el color de las 3 rayitas (burger) al verde principal */
+/* cambiar el color de las 3 rayitas burger al verde principal */
 .navbar-burger {
     color: #00b89c !important;
 }
@@ -392,8 +391,7 @@ a[href*="login.html"]:hover::after {
     max-height: 450px;
 }
 
-
-/* Limpieza de Sidebar Admin */
+/* limpieza de sidebar admin */
 aside.menu {
     position: sticky;
     top: 1.5rem;
@@ -417,7 +415,7 @@ aside.menu .menu-list a.is-active {
     color: #ffffff !important;
 }
 
-/* Espaciado del contenedor principal */
+/* espaciado del contenedor principal */
 .column.has-background-white-ter {
     padding: 3rem 2.5rem !important;
 }
@@ -625,7 +623,6 @@ aside.menu .menu-list a.is-active {
 .admin-metric-box {
     border-radius: 8px !important;
 }
-
 
 /* ===================================================
    12. ADMIN RESPONSIVE

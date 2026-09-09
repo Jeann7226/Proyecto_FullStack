@@ -65,7 +65,7 @@ export function renderHeader() {
     if (headerElement) {
         headerElement.innerHTML = headerHTML;
         
-        // Lógica del menú hamburguesa en móviles
+        // para q el menu de celu ande bien
         const burger = headerElement.querySelector('.navbar-burger');
         const menu = headerElement.querySelector('.navbar-menu');
         

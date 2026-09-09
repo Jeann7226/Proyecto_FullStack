@@ -2,7 +2,7 @@ import './components/alerta.js';
 import { renderHeader } from "./components/header.js";
 import { renderFooter } from "./components/footer.js";
 
-// Renderizamos el menú de navegación y el pie de página
+// cargamos el menu y el footer
 renderHeader();
 renderFooter();
 
@@ -11,7 +11,7 @@ const seccionTotal = document.getElementById("seccion-total");
 const textoTotal = document.getElementById("total-carrito");
 const btnVaciar = document.getElementById("btn-vaciar");
 
-// Función principal que lee la memoria y dibuja la pantalla
+// esta funcion arma la pantalla leyendo la memoria
 function renderizarCarrito() {
     let carritoMemoria = JSON.parse(localStorage.getItem("carritoFutbol")) || [];
 
@@ -29,18 +29,18 @@ function renderizarCarrito() {
     contenedorCarrito.innerHTML = "";
     let totalMatematico = 0;
 
-    // Recorremos cada producto
+    // pasamos por cada producto del carrito
     carritoMemoria.forEach((producto, index) => {
         const subtotal = producto.precio * producto.cantidad;
         totalMatematico += subtotal;
 
-        // Procesamiento de imagen para soportar base64 o rutas externas
+        // procesamos la ruta de las fotos
         let imgPath = producto.img || '';
         if (imgPath && !imgPath.startsWith('data:') && !imgPath.startsWith('http')) {
             imgPath = '../' + imgPath;
         }
 
-        // AQUÍ ESTÁ EL CAMBIO: Se añadió 'is-multiline' y distribución responsive por columnas
+        // acomodamos con grid pa que sea responsive
         contenedorCarrito.innerHTML += `
             <div class="box mb-3">
                 <div class="columns is-vcentered is-mobile is-multiline">
@@ -85,11 +85,11 @@ function renderizarCarrito() {
     textoTotal.innerText = totalMatematico.toLocaleString('es-CL');
     seccionTotal.classList.remove("is-hidden");
 
-    // Activamos los eventos de los botones
+    // le damos vida a los botones de accion
     activarBotonesCantidad(carritoMemoria);
 }
 
-// Función para darle vida a los botones de + y -
+// logica de los botoncitos de mas y menos
 function activarBotonesCantidad(carritoMemoria) {
     const botonesRestar = document.querySelectorAll(".btn-restar-carrito");
     const botonesSumar = document.querySelectorAll(".btn-sumar-carrito");
@@ -119,7 +119,7 @@ function activarBotonesCantidad(carritoMemoria) {
     });
 }
 
-// Lógica del botón "Vaciar Carrito"
+// pa vaciar todo el carrito
 if (btnVaciar) {
     btnVaciar.addEventListener("click", () => {
         localStorage.removeItem("carritoFutbol");
@@ -127,15 +127,15 @@ if (btnVaciar) {
     });
 }
 
-// Lógica del botón "Finalizar Compra"
+// pa cuando finalizan la compra
 const btnComprar = document.getElementById("btn-comprar");
 if (btnComprar) {
     btnComprar.addEventListener("click", () => {
-        alert("¡Gracias por tu compra! Tu pedido está siendo procesado. 🏆");
+        alert("¡Gracias por tu compra! Tu pedido está siendo procesado.");
         localStorage.removeItem("carritoFutbol");
         renderizarCarrito();
     });
 }
 
-// Ejecutamos la función apenas cargue la página
+// echamos a andar la cosa apenas carga
 renderizarCarrito();

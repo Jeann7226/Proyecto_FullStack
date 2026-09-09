@@ -29,7 +29,7 @@ if (contenedorContacto) {
                             </div>
                         </div>
 
-                        <!-- Campo para Correo Electrónico -->
+                        <!-- Campo para Correo -->
                         <div class="field mb-4">
                             <label class="label is-size-7" for="correo">CORREO</label>
                             <div class="control">
@@ -47,7 +47,7 @@ if (contenedorContacto) {
                             <p class="help is-danger" id="error-contenido"></p>
                         </div>
 
-                        <!-- Botón de envío -->
+                        <!-- boton evio -->
                         <div class="field has-text-centered">
                             <button type="submit" class="button is-dark is-fullwidth has-text-weight-semibold">
                                 ENVIAR MENSAJE
@@ -59,7 +59,7 @@ if (contenedorContacto) {
         </div>
     `;
 
-    // 1. Obtener elementos usando los IDs exactos del HTML inyectado
+    // buscamos los elementos por su id
     const form = document.getElementById("formulario-contacto");
     const inputEmail = document.getElementById("correo");
     const inputMensaje = document.getElementById("contenido");
@@ -68,15 +68,15 @@ if (contenedorContacto) {
     const errorMensaje = document.getElementById("error-contenido");
     const mensajeExito = document.getElementById("mensaje-exito");
 
-    // Expresión regular para validar formato correo
+    // vemos que el correo este bien escrito
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // 2. Evento submit
+    // cuando mandan el formulario
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         let esValido = true;
 
-        // Validación 1: Correo
+        // revisamos el correo
         if (!regexEmail.test(inputEmail.value.trim())) {
             inputEmail.classList.add("is-danger");
             errorEmail.textContent = "Ingresa un correo electrónico válido.";
@@ -86,7 +86,7 @@ if (contenedorContacto) {
             errorEmail.textContent = "";
         }
 
-        // Validación 2: Contenido (mínimo 10 caracteres)
+        // que escriba al menos 10 letras
         if (inputMensaje.value.trim().length < 10) {
             inputMensaje.classList.add("is-danger");
             errorMensaje.textContent = "El mensaje debe contener al menos 10 caracteres.";
@@ -96,7 +96,7 @@ if (contenedorContacto) {
             errorMensaje.textContent = "";
         }
 
-        // Si pasa ambas validaciones
+        // si todo ta bien hacemos la simulacion
         if (esValido) {
             mensajeExito.classList.remove("is-hidden");
             form.reset();

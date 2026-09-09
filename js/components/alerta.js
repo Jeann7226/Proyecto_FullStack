@@ -16,7 +16,7 @@ export function initAlertOverride() {
         `;
         document.body.insertAdjacentHTML('beforeend', modalHtml);
         
-        // Enfocar el botón para poder darle Enter
+        // le damos foco al boton pa apretar enter de una
         const btnClose = document.getElementById('custom-alert-close');
         if (btnClose) {
             btnClose.focus();
@@ -28,5 +28,5 @@ export function initAlertOverride() {
     };
 }
 
-// Auto-inicializar al importar
+// lo iniciamos de una al importar
 initAlertOverride();

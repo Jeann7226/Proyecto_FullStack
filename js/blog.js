@@ -8,13 +8,13 @@ renderFooter();
 const contenedorDetalle = document.getElementById("contenedor-detalle-blog");
 
 if (contenedorDetalle) {
-    // 1. Leemos el id de la URL (?id=X)
+    // leemos que id viene en la url
     const parametrosURL = new URLSearchParams(window.location.search);
     const idParam = parametrosURL.get("id");
 
     if (!idParam) {
-        // MODO LISTA DE NOTICIAS
-        // Limpiamos el contenedor
+        // vista del listado de noticias
+        // vaciamos el contenedor primero
         contenedorDetalle.innerHTML = `
             <h1 class="title is-2 mb-5">Nuestro Blog</h1>
             <p class="subtitle is-5 mb-6">Aquí encontrarás artículos, noticias y novedades sobre nuestra tienda y el mundo del fútbol.</p>
@@ -48,7 +48,7 @@ if (contenedorDetalle) {
         });
 
     } else {
-        // MODO DETALLE DE NOTICIA
+        // vista del detalle de la noticia
         const idNoticia = parseInt(idParam);
         const articulo = datosBlog.find(item => item.id === idNoticia);
 

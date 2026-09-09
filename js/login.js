@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             let isValid = true;
             
-            // Validar Correo
+            // que el correo sirva
             const emailValue = emailInput.value.trim();
             const emailDomains = ["@duoc.cl", "@profesor.duoc.cl", "@gmail.com"];
             const hasValidDomain = emailDomains.some(domain => emailValue.endsWith(domain));
@@ -28,16 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 emailInput.classList.remove("is-danger");
             }
             
-            // Allow admin bypass for requirements
+            // salto para probar el admin
             if (emailValue === "admin" && passwordInput.value === "admin123") {
-                 // Hack for admin testing based on user prompt.
+                 // hack para entrar modo dios a admin
                  isValid = true;
             }
             
-            // Validar Contraseña
+            // que la clave sea buena
             const passValue = passwordInput.value;
             if (passValue.length < 4 || passValue.length > 10) {
-                // Ignore validation error if using the hardcoded admin credentials
+                // ignoramos validacion si entra el admin secreto
                 if (!(emailValue === "admin" && passValue === "admin123")) {
                     passwordError.classList.remove("is-hidden");
                     passwordInput.classList.add("is-danger");
@@ -49,14 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             
             if (isValid) {
-                // Buscar en datosUsuarios
+                // buscamos el usuario en los datos
                 let userRole = "Cliente";
                 const usuarioEncontrado = datosUsuarios.find(u => u.correo === emailValue && u.password === passValue);
 
                 if (usuarioEncontrado) {
                     userRole = usuarioEncontrado.tipoUsuario;
                 } else if ((emailValue === "admin" || emailValue === "admin@duoc.cl") && passValue === "admin123") {
-                    // Fallback para admin hardcodeado
+                    // si no hay na usamos el admin manual
                     userRole = "Administrador";
                 } else {
                     alert('Credenciales incorrectas');

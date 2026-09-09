@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const comunaSelect = document.getElementById("reg-comuna");
 
     if (regionSelect && comunaSelect) {
-        // Cargar regiones
+        // cargamos las regiones en el select
         regionesYcomunas.forEach(rc => {
             const option = document.createElement("option");
             option.value = rc.region;
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             regionSelect.appendChild(option);
         });
 
-        // Evento cambio de región
+        // cuando cambian la region llenamos comunas
         regionSelect.addEventListener("change", (e) => {
             const selectedRegion = e.target.value;
             const data = regionesYcomunas.find(rc => rc.region === selectedRegion);
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.getElementById("registro-form");
     
-    // Función auxiliar de validación
+    // funsion ayudante pa validar
     const validateField = (id, condition, isValidRef) => {
         const input = document.getElementById(id);
         const error = document.getElementById(`error-${id.split('-')[1]}`);
@@ -58,38 +58,38 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             let isValid = true;
 
-            // Validar RUN (sin puntos ni guion, 7-9 chars, num + final num o K)
+            // el rut puro numero y k
             const runVal = document.getElementById("reg-run").value.trim();
             const runRegex = /^[0-9]{6,8}[0-9Kk]$/; 
             isValid = validateField("reg-run", runRegex.test(runVal) && runVal.length >= 7 && runVal.length <= 9, isValid);
 
-            // Validar Nombre
+            // chequeamos nombre
             const nombreVal = document.getElementById("reg-nombre").value.trim();
             isValid = validateField("reg-nombre", nombreVal.length > 0 && nombreVal.length <= 50, isValid);
 
-            // Validar Apellido
+            // chequeamos apellido
             const apellidoVal = document.getElementById("reg-apellido").value.trim();
             isValid = validateField("reg-apellido", apellidoVal.length > 0 && apellidoVal.length <= 100, isValid);
 
-            // Validar Correo
+            // que el correo sirva
             const correoVal = document.getElementById("reg-correo").value.trim();
             const emailDomains = ["@duoc.cl", "@profesor.duoc.cl", "@gmail.com"];
             const hasValidDomain = emailDomains.some(domain => correoVal.endsWith(domain));
             isValid = validateField("reg-correo", correoVal.length > 0 && correoVal.length <= 100 && hasValidDomain, isValid);
 
-            // Validar Contraseña
+            // que la clave sea buena
             const passVal = document.getElementById("reg-password") ? document.getElementById("reg-password").value.trim() : "";
             isValid = validateField("reg-password", passVal.length >= 4 && passVal.length <= 10, isValid);
 
-            // Validar Confirmación de Contraseña
+            // que las dos claves sean iguales
             const passConfirmVal = document.getElementById("reg-confirm-password") ? document.getElementById("reg-confirm-password").value.trim() : "";
             isValid = validateField("reg-confirm-password", passConfirmVal === passVal && passConfirmVal.length > 0, isValid);
 
-            // Validar Region y Comuna
+            // que haya marcado region y comuna
             isValid = validateField("reg-region", regionSelect.value !== "", isValid);
             isValid = validateField("reg-comuna", comunaSelect.value !== "", isValid);
 
-            // Validar Dirección
+            // chequeamos la direccion
             const direccionVal = document.getElementById("reg-direccion").value.trim();
             isValid = validateField("reg-direccion", direccionVal.length > 0 && direccionVal.length <= 300, isValid);
 

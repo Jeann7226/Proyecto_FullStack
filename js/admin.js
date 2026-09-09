@@ -4,15 +4,15 @@ import { datosUsuarios } from './data/usuarios.js';
 import { regionesYcomunas } from './data/regiones.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Protección de ruta básica (simulada)
+    // protegemos la ruta pa que no se metan directo
     const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
     const tipoUser = loggedUser ? (loggedUser.tipoUsuario || loggedUser.tipo) : null;
     if (!loggedUser || (tipoUser !== 'Administrador' && tipoUser !== 'Vendedor')) {
-        // En un entorno real se descomentaría esto para bloquear el acceso
+        // descomentar despues para bloquear de verdad
         // window.location.href = '../index.html'; 
     }
 
-    // --- Menú Burger Móvil ---
+    // config del menu de celular
     const adminBurger = document.getElementById('admin-burger');
     const adminSidebar = document.getElementById('admin-sidebar');
     if (adminBurger && adminSidebar) {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             adminSidebar.classList.toggle('is-active');
         });
         
-        // Ocultar sidebar al hacer clic en una opción (en móvil)
+        // escondemos el menu lateral al pinchar algo en el celu
         const menuLinks = adminSidebar.querySelectorAll('.admin-menu-link');
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- Navegación del Panel ---
+    // botones de navegacion del panel
     const navDashboard = document.getElementById('nav-dashboard');
     const navProductos = document.getElementById('nav-productos');
     const navUsuarios = document.getElementById('nav-usuarios');
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const views = [viewDashboard, viewProductos, viewUsuarios, viewFormProducto, viewFormUsuario];
     const navs = [navDashboard, navProductos, navUsuarios];
 
-    // Ocultar tabs y botones si es vendedor
+    // escondemos funciones si el loco es vendedor nomas
     if (tipoUser === 'Vendedor') {
         if (navUsuarios) navUsuarios.parentElement.style.display = 'none';
         const btnNuevoProducto = document.getElementById('btn-nuevo-producto');
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- Lógica de Productos ---
+    // variables de los productos
     let productosLocales = JSON.parse(localStorage.getItem('adminProductos')) || datosProductos;
     let imgBase64 = "";
     let img2Base64 = "";
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const p = productosLocales[i];
             const tr = document.createElement('tr');
             
-            // Validar si es imagen base64 o ruta normal
+            // vemos si la foto es base64 o viene de una carpeta
             let imgSrc = p.img;
             if (imgSrc && !imgSrc.startsWith('data:') && !imgSrc.startsWith('http')) {
                 imgSrc = '../' + imgSrc;
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Manejo de archivos (imágenes)
+    // aca procesamos las fotos subidas
     const inputImg = document.getElementById('prod-img');
     if (inputImg) {
         inputImg.addEventListener('change', (e) => {
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
         imgBase64 = "";
         img2Base64 = "";
         
-        // Autoincrementar ID
+        // calculamos el id que sigue autimaticamente
         const maxId = productosLocales.reduce((max, p) => p.id > max ? p.id : max, 0);
         document.getElementById('prod-codigo').value = (maxId + 1).toString();
         
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const isEditing = currentProdEditId !== null;
         const assignedId = isEditing ? currentProdEditId : parseInt(document.getElementById('prod-codigo').value);
 
-        // Si estamos editando y no seleccionamos nueva imagen, mantenemos la anterior
+        // si no subio foto nueva dejamos la que ya tenia
         let finalImg = imgBase64;
         let finalImg2 = img2Base64;
         
@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         if (isEditing) {
-            // Editar
+            // modo de edicion
             for (let i = 0; i < productosLocales.length; i++) {
                 if (productosLocales[i].id === assignedId) {
                     productosLocales[i] = nuevoProducto;
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         } else {
-            // Nuevo
+            // crear uno nuevo
             productosLocales.push(nuevoProducto);
         }
 
@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('prod-stock-critico').value = p.stockCritico || 0;
             document.getElementById('prod-categoria').value = p.categoria || '';
             
-            // Limpiar inputs de file al editar (la img original se conserva si no se sube otra)
+            // limpiamos los inputs de archivo por si acaso
             document.getElementById('prod-img').value = '';
             document.getElementById('prod-img2').value = '';
             imgBase64 = "";
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    // --- Lógica de Usuarios ---
+    // funciones pa los usuarios
     let usuariosLocales = JSON.parse(localStorage.getItem('adminUsuarios')) || datosUsuarios;
 
     function actualizarKPIs() {
@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (kpiUsuarios) kpiUsuarios.textContent = usuariosLocales.length;
     }
     
-    // Actualizar KPIs al iniciar
+    // refrescamos los numeros estadisticos
     actualizarKPIs();
 
     function guardarUsuarios() {
@@ -286,13 +286,13 @@ document.addEventListener("DOMContentLoaded", () => {
         actualizarKPIs();
     }
 
-    // Array de Regiones y Comunas se importa desde ./data/regiones.js
+    // nota las regiones vienen del otro archivo
 
     const selectRegion = document.getElementById('user-region');
     const selectComuna = document.getElementById('user-comuna');
 
     if (selectRegion && selectComuna) {
-        // Cargar Regiones
+        // llenamos las opciones de las regiones
         regionesYcomunas.forEach(rc => {
             const option = document.createElement("option");
             option.value = rc.region;
@@ -300,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
             selectRegion.appendChild(option);
         });
 
-        // Evento al cambiar región
+        // cuando cambia la region actualizamos la lista de comunas
         selectRegion.addEventListener("change", (e) => {
             const selectedRegion = e.target.value;
             const data = regionesYcomunas.find(rc => rc.region === selectedRegion);
@@ -360,19 +360,19 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('form-usuario').addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Validaciones Manuales Requeridas
+        // chequeamos los datos a mano
         const runInput = document.getElementById('user-run').value;
         const correoInput = document.getElementById('user-correo').value;
         const passwordInput = document.getElementById('user-password').value;
         
-        // Validar RUN sin puntos ni guion
+        // revisamos que el rut venga limpiecito
         const runRegex = /^[0-9]+[0-9kK]$/;
         if (!runRegex.test(runInput)) {
             alert('El RUN debe ingresarse sin puntos ni guión (ej: 19011022K).');
             return;
         }
 
-        // Validar dominio de correo
+        // el correo tiene que ser duoc o gmail
         const dominioValido = correoInput.endsWith('@duoc.cl') || correoInput.endsWith('@profesor.duoc.cl') || correoInput.endsWith('@gmail.com');
         if (!dominioValido) {
             alert('El correo debe terminar en @duoc.cl, @profesor.duoc.cl o @gmail.com');
@@ -385,7 +385,7 @@ document.addEventListener("DOMContentLoaded", () => {
             nombre: document.getElementById('user-nombre').value,
             apellidos: document.getElementById('user-apellidos').value,
             correo: correoInput,
-            password: passwordInput, // Guarda password mock
+            password: passwordInput, // aca se guarda la clave falsa
             tipoUsuario: document.getElementById('user-tipo').value,
             fechaNacimiento: document.getElementById('user-fecha').value,
             region: document.getElementById('user-region').value,
@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         } else {
-            // Validar que no exista el RUN
+            // ojo que no exista ya un rut igualito
             const existe = usuariosLocales.find(u => u.run === runInput);
             if (existe) {
                 alert('El RUN ya está registrado.');
@@ -421,7 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('user-mode').value = 'edit';
             const runField = document.getElementById('user-run');
             runField.value = u.run;
-            runField.readOnly = true; // No permitir cambiar el RUN en edición
+            runField.readOnly = true; // bloqueamos el rut pa que no lo toquen en edicion
             
             document.getElementById('user-nombre').value = u.nombre;
             document.getElementById('user-apellidos').value = u.apellidos;
@@ -433,7 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             selectRegion.value = u.region;
             
-            // Llenar comunas de la región seleccionada
+            // metemos las comunas de la region elegida
             const data = regionesYcomunas.find(rc => rc.region === u.region);
             selectComuna.innerHTML = '<option value="" disabled selected>Seleccione la comuna...</option>';
             if (data) {
@@ -446,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 selectComuna.disabled = false;
             }
 
-            // Seleccionar comuna asignada, o agregarla si falta en el array
+            // si el usuario ya tiene comuna la dejamos seleccionada al tiro
             if(u.comuna) {
                 if(!Array.from(selectComuna.options).some(opt => opt.value === u.comuna)) {
                     selectComuna.innerHTML += `<option value="${u.comuna}">${u.comuna}</option>`;

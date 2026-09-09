@@ -9,7 +9,7 @@
 </head>
 <body>
     <section class="section p-0 admin-section">
-        <!-- Navbar Móvil -->
+        <!-- barra del celu -->
         <nav class="navbar is-dark is-hidden-desktop admin-mobile-nav" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item has-text-weight-bold" href="#">
@@ -23,7 +23,7 @@
             </div>
         </nav>
 
-        <!-- Se removió is-gapless y se definió un contenedor flex directo -->
+        <!-- contenedor principal -->
         <div class="admin-container">
             
             
@@ -76,10 +76,10 @@
             
             <main class="has-background-white-ter admin-main">
                 
-                <!-- Vista Dashboard -->
+                <!-- vista principal del admin -->
                 <div id="view-dashboard" class="admin-view">
                     
-                    <!-- Encabezado con buen espacio -->
+                    <!-- titulo con espacio -->
                     <div class="admin-header-container">
                         <div>
                             <h1 class="title is-3 admin-header-title">
@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                    <!-- Métricas de resumen (KPIs) -->
+                    <!-- numeros y estadisticas -->
                     <div class="columns is-multiline mb-5">
                         <div class="column is-4">
                             <div class="box has-text-centered p-4 admin-metric-box">
@@ -116,7 +116,7 @@
                         </div>
                     </div>
 
-                    <!-- Caja de información -->
+                    <!-- cajita con info util -->
                     <div class="box p-5 admin-metric-box">
                         <h2 class="title is-5 mb-2">Gestión del Sistema</h2>
                         <p class="has-text-grey-dark">
@@ -125,7 +125,7 @@
                     </div>
                 </div>
 
-                <!-- Productos View -->
+                <!-- vista de los productos -->
                 <div id="view-productos" class="admin-view is-hidden">
                     <div class="is-flex is-justify-content-space-between is-align-items-center mb-4">
                         <h1 class="title m-0">Productos</h1>
@@ -145,13 +145,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Llenado por JS -->
+                                <!-- se llena solo con js -->
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Formulario Producto -->
+                <!-- formulario para productos -->
                 <div id="view-form-producto" class="admin-view is-hidden">
                     <h1 class="title" id="titulo-form-producto">NUEVO PRODUCTO</h1>
                     <div class="box">
@@ -244,7 +244,7 @@
                     </div>
                 </div>
 
-                <!-- Usuarios View -->
+                <!-- vista de usuarios -->
                 <div id="view-usuarios" class="admin-view is-hidden">
                     <div class="is-flex is-justify-content-space-between is-align-items-center mb-4">
                         <h1 class="title m-0">Usuarios</h1>
@@ -263,13 +263,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Llenado por JS -->
+                                <!-- se llena solo con js -->
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Formulario Usuario -->
+                <!-- formulario de usuarios -->
                 <div id="view-form-usuario" class="admin-view is-hidden">
                     <h1 class="title" id="titulo-form-usuario">NUEVO USUARIO</h1>
                     <div class="box">
@@ -345,7 +345,7 @@
                                             <div class="select is-fullwidth">
                                                 <select id="user-region" required>
                                                     <option value="" disabled selected>Seleccione región...</option>
-                                                    <!-- Llenado por JS -->
+                                                    <!-- se llena solo con js -->
                                                 </select>
                                             </div>
                                         </div>
@@ -358,7 +358,7 @@
                                             <div class="select is-fullwidth">
                                                 <select id="user-comuna" required disabled>
                                                     <option value="" disabled selected>Seleccione comuna...</option>
-                                                    <!-- Llenado por JS -->
+                                                    <!-- se llena solo con js -->
                                                 </select>
                                             </div>
                                         </div>

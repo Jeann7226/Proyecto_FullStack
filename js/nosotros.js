@@ -1,22 +1,21 @@
 import { renderHeader } from "./components/header.js";
 import { renderFooter } from "./components/footer.js";
 
-// Renderizar componentes compartidos
+// ponemos header y footer
 renderHeader();
 renderFooter();
 
-// Capturar el contenedor usando su ID
+// agarramos donde va el contenido
 const contenedor = document.getElementById("contenedor-nosotros");
 
-// Limpiamos el contenedor
+// vaciamos el contenedor primero
 contenedor.innerHTML = "";
 
-// Inyectamos la información de la empresa y el equipo
+// metemos el texto de nosotros aca
 contenedor.innerHTML = `
     <h1 class="title has-text-centered mb-2">Sobre Nosotros</h1>
     <p class="subtitle has-text-centered has-text-grey mb-6">Conoce la historia de nuestra tienda y al equipo de desarrollo.</p>
 
-    <!-- Información de la Empresa -->
     <article class="box p-5 mb-6">
         <h2 class="title is-4 mb-3">Nuestra Empresa</h2>
         <div class="content is-medium">
@@ -30,7 +29,7 @@ contenedor.innerHTML = `
     <h2 class="title is-4 has-text-centered mb-5">Equipo de Desarrolladores</h2>
     <div class="columns is-multiline">
         
-        <!-- Jean Gutiérrez -->
+        <!-- Jean Gutierrez -->
         <article class="column is-12-mobile is-4-tablet">
             <div class="card p-4 has-text-centered h-100">
                 <div class="card-content">

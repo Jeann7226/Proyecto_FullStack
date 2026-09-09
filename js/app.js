@@ -14,12 +14,12 @@ if (contenedor) {
     contenedor.innerHTML = "";
     const isInsidePages = window.location.pathname.includes('/pages/');
 
-    // Conservamos la lógica de main: Productos del LocalStorage (Admin)
+    // sacamos los productos del localstorage
     const productosActualizados = JSON.parse(localStorage.getItem('adminProductos')) || datosProductos;
     const productosAMostrar = isInsidePages ? productosActualizados : productosActualizados.slice(0, 8);
 
     productosAMostrar.forEach(producto => {
-        // Conservamos la lógica de main: Soporte para imágenes base64 del Admin
+        // soporte pa las fotos de base64
         let imgPath = producto.img;
         if (imgPath && !imgPath.startsWith('data:') && !imgPath.startsWith('http')) {
             imgPath = isInsidePages ? `../${imgPath}` : imgPath;
