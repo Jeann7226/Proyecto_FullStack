@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function guardarProductos() {
         localStorage.setItem('adminProductos', JSON.stringify(productosLocales));
+        if (typeof actualizarKPIs === 'function') actualizarKPIs();
     }
 
     function renderTablaProductos() {
@@ -270,8 +271,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- Lógica de Usuarios ---
     let usuariosLocales = JSON.parse(localStorage.getItem('adminUsuarios')) || datosUsuarios;
 
+    function actualizarKPIs() {
+        const kpiCamisetas = document.getElementById('kpi-camisetas');
+        const kpiUsuarios = document.getElementById('kpi-usuarios');
+        if (kpiCamisetas) kpiCamisetas.textContent = productosLocales.length;
+        if (kpiUsuarios) kpiUsuarios.textContent = usuariosLocales.length;
+    }
+    
+    // Actualizar KPIs al iniciar
+    actualizarKPIs();
+
     function guardarUsuarios() {
         localStorage.setItem('adminUsuarios', JSON.stringify(usuariosLocales));
+        actualizarKPIs();
     }
 
     // Array de Regiones y Comunas se importa desde ./data/regiones.js
